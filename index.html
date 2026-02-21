@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sperax Walk to Win Challenge 2025</title>
+  <title>Sperax Walk to Win Challenge 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,16 +12,15 @@
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
     :root {
-      --black:   #0d0d0d;
-      --off-white: #f8f8f6;
-      --white:   #ffffff;
-      --green:   #3bdf7a;
+      --black:      #0d0d0d;
+      --off-white:  #f8f8f6;
+      --white:      #ffffff;
+      --green:      #3bdf7a;
       --green-dark: #28b85d;
-      --mid:     #1a1a1a;
-      --gray:    #f2f2ef;
-      --border:  #e8e8e4;
-      --muted:   #888884;
-      --text:    #1a1a1a;
+      --gray:       #f2f2ef;
+      --border:     #e8e8e4;
+      --muted:      #888884;
+      --text:       #1a1a1a;
     }
 
     html { scroll-behavior: smooth; }
@@ -37,17 +36,16 @@
     .announcement {
       background: var(--black);
       color: var(--white);
-      text-align: center;
-      padding: 10px 20px;
+      padding: 10px 0;
       font-size: 0.78rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       overflow: hidden;
+      white-space: nowrap;
     }
     .announcement-inner {
       display: inline-block;
-      white-space: nowrap;
-      animation: scroll-bar 22s linear infinite;
+      animation: scroll-bar 28s linear infinite;
     }
     .announcement-inner span { margin: 0 48px; }
     @keyframes scroll-bar {
@@ -57,713 +55,257 @@
 
     /* ─── NAV ─── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 200;
+      position: sticky; top: 0; z-index: 200;
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 64px;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
+    .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
     .logo-mark {
-      width: 32px; height: 32px;
-      background: var(--black);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:32px; height:32px; background:var(--black); border-radius:6px;
+      display:flex; align-items:center; justify-content:center;
     }
-    .logo-mark svg { width: 18px; height: 18px; fill: var(--green); }
-    .logo-text {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--black);
-      letter-spacing: 0.04em;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--black); }
+    .logo-mark svg { width:18px; height:18px; fill:var(--green); }
+    .logo-text { font-size:1.15rem; font-weight:700; color:var(--black); letter-spacing:0.04em; }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { font-size:0.85rem; font-weight:500; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .nav-links a:hover { color:var(--black); }
     .nav-cta {
-      background: var(--black);
-      color: var(--white) !important;
-      padding: 10px 22px;
-      border-radius: 100px;
-      font-size: 0.82rem !important;
-      font-weight: 600 !important;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s !important;
-      display: inline-block;
+      background:var(--black); color:var(--white) !important; padding:10px 22px;
+      border-radius:100px; font-size:0.82rem !important; font-weight:600 !important;
+      text-decoration:none; transition:background .2s, transform .2s !important; display:inline-block;
     }
-    .nav-cta:hover {
-      background: var(--green-dark) !important;
-      color: var(--white) !important;
-      transform: translateY(-1px);
-    }
+    .nav-cta:hover { background:var(--green-dark) !important; transform:translateY(-1px); }
 
     /* ─── HERO ─── */
     .hero {
-      background: var(--black);
-      color: var(--white);
-      min-height: 88vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 24px;
-      position: relative;
-      overflow: hidden;
+      background: var(--black); color: var(--white);
+      min-height: 88vh; display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      text-align:center; padding:80px 24px; position:relative; overflow:hidden;
     }
     .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content:''; position:absolute; inset:0;
       background:
         radial-gradient(ellipse 60% 50% at 30% 60%, rgba(59,223,122,0.08) 0%, transparent 70%),
         radial-gradient(ellipse 40% 40% at 75% 30%, rgba(59,223,122,0.06) 0%, transparent 70%);
-      pointer-events: none;
+      pointer-events:none;
     }
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(59,223,122,0.12);
-      border: 1px solid rgba(59,223,122,0.3);
-      color: var(--green);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 7px 18px;
-      border-radius: 100px;
-      margin-bottom: 32px;
-      animation: fadeUp 0.7s ease both;
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(59,223,122,0.12); border:1px solid rgba(59,223,122,0.3);
+      color:var(--green); font-size:0.72rem; font-weight:600; letter-spacing:0.15em;
+      text-transform:uppercase; padding:7px 18px; border-radius:100px;
+      margin-bottom:32px; animation:fadeUp .7s ease both;
     }
-    .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+    .hero-badge::before { content:'●'; font-size:0.5rem; animation:pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
     .hero h1 {
-      font-size: clamp(3rem, 9vw, 7.5rem);
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      animation: fadeUp 0.7s 0.08s ease both;
+      font-size:clamp(3rem,9vw,7.5rem); font-weight:800;
+      line-height:0.95; letter-spacing:-0.03em;
+      animation:fadeUp .7s .08s ease both;
     }
-    .hero h1 .line2 { color: var(--green); display: block; }
+    .hero h1 .line2 { color:var(--green); display:block; }
     .hero-sub {
-      max-width: 480px;
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: #aaa;
-      line-height: 1.7;
-      margin: 24px auto 0;
-      animation: fadeUp 0.7s 0.16s ease both;
+      max-width:480px; font-size:1.05rem; font-weight:300; color:#aaa;
+      line-height:1.7; margin:24px auto 0; animation:fadeUp .7s .16s ease both;
+    }
+    .npn-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14);
+      color:#ccc; font-size:0.72rem; font-weight:600; letter-spacing:0.12em;
+      text-transform:uppercase; padding:6px 16px; border-radius:100px;
+      margin-top:14px; animation:fadeUp .7s .2s ease both;
     }
     .hero-prizes {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 36px 0;
-      animation: fadeUp 0.7s 0.24s ease both;
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+      margin:36px 0; animation:fadeUp .7s .24s ease both;
     }
     .prize-chip {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 12px;
-      padding: 16px 28px;
-      text-align: center;
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+      border-radius:12px; padding:16px 28px; text-align:center;
     }
-    .prize-chip .chip-val {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--green);
-      line-height: 1;
-    }
-    .prize-chip .chip-label {
-      font-size: 0.72rem;
-      color: #888;
-      font-weight: 500;
-      margin-top: 4px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    .plus-sign {
-      display: flex;
-      align-items: center;
-      font-size: 1.5rem;
-      color: #444;
-      font-weight: 300;
-    }
+    .prize-chip .chip-val { font-size:1.6rem; font-weight:700; color:var(--green); line-height:1; }
+    .prize-chip .chip-label { font-size:0.72rem; color:#888; font-weight:500; margin-top:4px; letter-spacing:0.05em; text-transform:uppercase; }
+    .plus-sign { display:flex; align-items:center; font-size:1.5rem; color:#444; font-weight:300; }
     .hero-actions {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 0.7s 0.32s ease both;
+      display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+      animation:fadeUp .7s .32s ease both;
     }
     .btn-green {
-      background: var(--green);
-      color: var(--black);
-      font-size: 0.88rem;
-      font-weight: 700;
-      padding: 16px 36px;
-      border-radius: 100px;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: inline-block;
+      background:var(--green); color:var(--black); font-size:0.88rem; font-weight:700;
+      padding:16px 36px; border-radius:100px; text-decoration:none; letter-spacing:0.02em;
+      border:none; cursor:pointer; transition:transform .2s, box-shadow .2s; display:inline-block;
     }
-    .btn-green:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(59,223,122,0.35);
-    }
+    .btn-green:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(59,223,122,0.35); }
     .btn-outline-white {
-      background: transparent;
-      color: #ccc;
-      font-size: 0.88rem;
-      font-weight: 500;
-      padding: 16px 36px;
-      border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.18);
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-      display: inline-block;
+      background:transparent; color:#ccc; font-size:0.88rem; font-weight:500;
+      padding:16px 36px; border-radius:100px; border:1px solid rgba(255,255,255,0.18);
+      text-decoration:none; transition:border-color .2s, color .2s; display:inline-block;
     }
-    .btn-outline-white:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+    .btn-outline-white:hover { border-color:rgba(255,255,255,0.5); color:var(--white); }
 
     /* ─── COUNTDOWN ─── */
     .countdown-bar {
-      background: var(--green);
-      padding: 20px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
+      background:var(--green); padding:20px 48px;
+      display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap;
     }
-    .countdown-label {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--black);
-      opacity: 0.65;
-    }
-    .countdown-units {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .cd-unit {
-      background: var(--black);
-      color: var(--white);
-      border-radius: 8px;
-      padding: 10px 16px;
-      text-align: center;
-      min-width: 64px;
-    }
-    .cd-num {
-      font-size: 1.6rem;
-      font-weight: 800;
-      line-height: 1;
-      display: block;
-    }
-    .cd-label {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #888;
-      display: block;
-      margin-top: 3px;
-    }
-    .cd-sep {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--black);
-      opacity: 0.4;
-      margin-bottom: 12px;
-    }
+    .countdown-label { font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--black); opacity:0.65; }
+    .countdown-units { display:flex; gap:8px; align-items:center; }
+    .cd-unit { background:var(--black); color:var(--white); border-radius:8px; padding:10px 16px; text-align:center; min-width:64px; }
+    .cd-num  { font-size:1.6rem; font-weight:800; line-height:1; display:block; }
+    .cd-label{ font-size:0.6rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#888; display:block; margin-top:3px; }
+    .cd-sep  { font-size:1.4rem; font-weight:700; color:var(--black); opacity:0.4; margin-bottom:12px; }
 
     /* ─── SECTION LAYOUT ─── */
-    .section {
-      padding: 96px 48px;
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-    .section-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--green-dark);
-      margin-bottom: 14px;
-    }
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .section-body {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.75;
-      max-width: 560px;
-      margin-bottom: 52px;
-    }
+    .section-eyebrow { font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--green-dark); margin-bottom:14px; }
+    .section-title   { font-size:clamp(2rem,4vw,3rem); font-weight:800; letter-spacing:-0.02em; line-height:1.1; margin-bottom:16px; }
+    .section-body    { font-size:1rem; color:var(--muted); line-height:1.75; max-width:560px; margin-bottom:52px; }
 
     /* ─── HOW IT WORKS ─── */
-    .hiw-bg { background: var(--gray); }
-    .hiw-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 96px 48px;
-    }
-    .hiw-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      margin-top: 52px;
-    }
-    .hiw-card {
-      background: var(--white);
-      padding: 40px 32px;
-      position: relative;
-      transition: box-shadow 0.25s;
-    }
-    .hiw-card:first-child { border-radius: 12px 0 0 12px; }
-    .hiw-card:last-child  { border-radius: 0 12px 12px 0; }
-    .hiw-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); z-index: 1; }
-    .hiw-num {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: #ebebeb;
-      line-height: 1;
-      margin-bottom: 20px;
-    }
-    .hiw-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--black);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 1.2rem;
-    }
-    .hiw-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--black);
-    }
-    .hiw-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
+    .hiw-bg    { background:var(--gray); }
+    .hiw-inner { max-width:1160px; margin:0 auto; padding:96px 48px; }
+    .hiw-grid  { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:52px; }
+    .hiw-card  { background:var(--white); padding:40px 32px; position:relative; transition:box-shadow .25s; }
+    .hiw-card:first-child { border-radius:12px 0 0 12px; }
+    .hiw-card:last-child  { border-radius:0 12px 12px 0; }
+    .hiw-card:hover { box-shadow:0 12px 40px rgba(0,0,0,0.08); z-index:1; }
+    .hiw-num  { font-size:3.5rem; font-weight:800; color:#ebebeb; line-height:1; margin-bottom:20px; }
+    .hiw-icon { width:44px; height:44px; background:var(--black); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; font-size:1.2rem; }
+    .hiw-card h3 { font-size:1rem; font-weight:700; margin-bottom:10px; color:var(--black); }
+    .hiw-card p  { font-size:0.88rem; color:var(--muted); line-height:1.65; }
 
     /* ─── PRIZE SECTION ─── */
-    .prize-section {
-      background: var(--black);
-      color: var(--white);
-    }
-    .prize-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 96px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .prize-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .prize-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 32px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      transition: border-color 0.3s, background 0.3s;
-    }
-    .prize-card:hover {
-      border-color: rgba(59,223,122,0.4);
-      background: rgba(59,223,122,0.04);
-    }
-    .prize-card-icon {
-      font-size: 2rem;
-      width: 64px;
-      height: 64px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .prize-card-val {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--green);
-      line-height: 1;
-    }
-    .prize-card-desc {
-      font-size: 0.82rem;
-      color: #888;
-      margin-top: 4px;
-      line-height: 1.5;
-    }
-    .prize-text { color: var(--white); }
-    .prize-text .section-eyebrow { color: var(--green); }
-    .prize-text .section-title { color: var(--white); }
-    .prize-text .section-body { color: #888; max-width: 100%; margin-bottom: 32px; }
-    .prize-total {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 8px;
-      background: rgba(59,223,122,0.1);
-      border: 1px solid rgba(59,223,122,0.2);
-      border-radius: 12px;
-      padding: 16px 24px;
-      margin-bottom: 32px;
-    }
-    .prize-total-val {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--green);
-    }
-    .prize-total-label {
-      font-size: 0.82rem;
-      color: #888;
-    }
-    .terms-note {
-      font-size: 0.72rem;
-      color: #444;
-      line-height: 1.7;
-      margin-top: 20px;
-    }
+    .prize-section { background:var(--black); color:var(--white); }
+    .prize-inner   { max-width:1160px; margin:0 auto; padding:96px 48px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .prize-stack   { display:flex; flex-direction:column; gap:16px; }
+    .prize-card    { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:32px; display:flex; align-items:center; gap:24px; transition:border-color .3s, background .3s; }
+    .prize-card:hover { border-color:rgba(59,223,122,0.4); background:rgba(59,223,122,0.04); }
+    .prize-card-icon { font-size:2rem; width:64px; height:64px; background:rgba(255,255,255,0.06); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .prize-card-val  { font-size:2rem; font-weight:800; color:var(--green); line-height:1; }
+    .prize-card-desc { font-size:0.82rem; color:#888; margin-top:4px; line-height:1.5; }
+    .prize-text .section-eyebrow { color:var(--green); }
+    .prize-text .section-title   { color:var(--white); }
+    .prize-text .section-body    { color:#888; max-width:100%; margin-bottom:32px; }
+    .prize-total { display:inline-flex; align-items:baseline; gap:8px; background:rgba(59,223,122,0.1); border:1px solid rgba(59,223,122,0.2); border-radius:12px; padding:16px 24px; margin-bottom:32px; }
+    .prize-total-val   { font-size:2.4rem; font-weight:800; color:var(--green); }
+    .prize-total-label { font-size:0.82rem; color:#888; }
+    .terms-note { font-size:0.72rem; color:#444; line-height:1.7; margin-top:20px; }
 
     /* ─── REGISTER FORM ─── */
-    #register {
-      background: var(--off-white);
-      border-top: 1px solid var(--border);
-    }
-    .register-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 96px 24px;
-      text-align: center;
-    }
-    .register-inner .section-title { margin-bottom: 8px; }
-    .register-inner .section-body {
-      margin: 0 auto 40px;
-      max-width: 480px;
-    }
-    .form-box {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 44px 48px;
-      text-align: left;
-      box-shadow: 0 2px 32px rgba(0,0,0,0.04);
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .field-group {
-      margin-bottom: 16px;
-    }
-    .field-group label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
+    #register { background:var(--off-white); border-top:1px solid var(--border); }
+    .register-inner { max-width:680px; margin:0 auto; padding:96px 24px; text-align:center; }
+    .register-inner .section-title { margin-bottom:8px; }
+    .register-inner .section-body  { margin:0 auto 40px; max-width:480px; }
+    .form-box { background:var(--white); border:1px solid var(--border); border-radius:20px; padding:44px 48px; text-align:left; box-shadow:0 2px 32px rgba(0,0,0,0.04); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .field-group { margin-bottom:16px; }
+    .field-group label { display:block; font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
     .field-group input,
     .field-group select {
-      width: 100%;
-      background: var(--off-white);
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 18px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.95rem;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      -webkit-appearance: none;
+      width:100%; background:var(--off-white); border:1.5px solid var(--border);
+      border-radius:10px; padding:14px 18px; font-family:'Outfit',sans-serif;
+      font-size:0.95rem; color:var(--text); outline:none;
+      transition:border-color .2s, box-shadow .2s; -webkit-appearance:none;
     }
     .field-group input:focus,
-    .field-group select:focus {
-      border-color: var(--green-dark);
-      box-shadow: 0 0 0 3px rgba(59,223,122,0.15);
-    }
-    .field-group input::placeholder { color: #bbb; }
-    .field-group select { cursor: pointer; }
-    .field-group select option { background: white; }
+    .field-group select:focus { border-color:var(--green-dark); box-shadow:0 0 0 3px rgba(59,223,122,0.15); }
+    .field-group input::placeholder { color:#bbb; }
+    .field-group select { cursor:pointer; }
     .form-submit-btn {
-      width: 100%;
-      margin-top: 8px;
-      padding: 18px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      background: var(--black);
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      width:100%; margin-top:8px; padding:18px; font-family:'Outfit',sans-serif;
+      font-size:1rem; font-weight:700; background:var(--black); color:var(--white);
+      border:none; border-radius:12px; cursor:pointer; letter-spacing:0.02em;
+      transition:background .2s, transform .15s, box-shadow .2s;
     }
-    .form-submit-btn:hover {
-      background: var(--green-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(40,184,93,0.3);
-    }
-    .form-note {
-      font-size: 0.73rem;
-      color: #bbb;
-      text-align: center;
-      margin-top: 14px;
-      line-height: 1.6;
+    .form-submit-btn:hover { background:var(--green-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(40,184,93,0.3); }
+    .form-submit-btn:disabled { background:#ccc; cursor:not-allowed; transform:none; box-shadow:none; }
+    .form-note { font-size:0.73rem; color:#bbb; text-align:center; margin-top:14px; line-height:1.6; }
+    .form-error { display:none; background:#fff0f0; border:1.5px solid #ffb3b3; border-radius:10px; padding:14px 18px; font-size:0.85rem; color:#c0392b; margin-bottom:16px; }
+    .form-error.show { display:block; }
+
+    /* ─── TERMS & CONDITIONS ─── */
+    .terms-section { background:var(--gray); border-top:1px solid var(--border); }
+    .terms-inner   { max-width:860px; margin:0 auto; padding:80px 24px; }
+    .terms-inner .section-title { font-size:1.8rem; margin-bottom:32px; }
+    .terms-block   { margin-bottom:28px; }
+    .terms-block h3 { font-size:0.88rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--black); margin-bottom:10px; }
+    .terms-block p, .terms-block li { font-size:0.85rem; color:var(--muted); line-height:1.8; }
+    .terms-block ul { padding-left:20px; }
+    .terms-block li { margin-bottom:4px; }
+    .npn-callout {
+      display:flex; align-items:center; gap:12px;
+      background:var(--white); border:1.5px solid var(--green-dark);
+      border-radius:12px; padding:18px 24px; margin-bottom:32px;
+      font-size:0.85rem; font-weight:600; color:var(--green-dark);
     }
 
     /* ─── FAQ ─── */
-    .faq-section { border-top: 1px solid var(--border); }
-    .faq-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 96px 24px;
-    }
-    .faq-inner .section-title { margin-bottom: 40px; }
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
+    .faq-section { border-top:1px solid var(--border); }
+    .faq-inner   { max-width:720px; margin:0 auto; padding:96px 24px; }
+    .faq-inner .section-title { margin-bottom:40px; }
+    .faq-item { border-bottom:1px solid var(--border); }
     .faq-q {
-      width: 100%;
-      background: none;
-      border: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 22px 0;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: var(--text);
-      cursor: pointer;
-      text-align: left;
-      gap: 16px;
+      width:100%; background:none; border:none; display:flex; justify-content:space-between;
+      align-items:center; padding:22px 0; font-family:'Outfit',sans-serif; font-size:0.98rem;
+      font-weight:600; color:var(--text); cursor:pointer; text-align:left; gap:16px;
     }
-    .faq-icon {
-      width: 28px;
-      height: 28px;
-      background: var(--black);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      transition: background 0.2s, transform 0.3s;
-    }
-    .faq-item.open .faq-icon {
-      background: var(--green-dark);
-      transform: rotate(45deg);
-    }
-    .faq-a {
-      display: none;
-      padding: 0 0 22px;
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-    .faq-item.open .faq-a { display: block; }
+    .faq-icon { width:28px; height:28px; background:var(--black); color:var(--white); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; transition:background .2s, transform .3s; }
+    .faq-item.open .faq-icon { background:var(--green-dark); transform:rotate(45deg); }
+    .faq-a { display:none; padding:0 0 22px; font-size:0.92rem; color:var(--muted); line-height:1.75; }
+    .faq-item.open .faq-a { display:block; }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: var(--black);
-      color: var(--white);
-      padding: 52px 48px;
-    }
-    .footer-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .footer-logo .logo-text { color: var(--white); font-size: 1.1rem; }
-    .footer-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .footer-links a {
-      font-size: 0.82rem;
-      color: #555;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--white); }
-    .footer-copy {
-      font-size: 0.75rem;
-      color: #444;
-      width: 100%;
-      text-align: center;
-      padding-top: 28px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-top: 8px;
-    }
+    footer { background:var(--black); color:var(--white); padding:52px 48px; }
+    .footer-inner { max-width:1160px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo .logo-text { color:var(--white); font-size:1.1rem; }
+    .footer-links { display:flex; gap:28px; list-style:none; }
+    .footer-links a { font-size:0.82rem; color:#555; text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:var(--white); }
+    .footer-copy { font-size:0.75rem; color:#444; width:100%; text-align:center; padding-top:28px; border-top:1px solid rgba(255,255,255,0.05); margin-top:8px; }
 
-    /* ─── MODAL ─── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal-box {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 56px 48px;
-      max-width: 480px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.25);
-      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-    @keyframes popIn {
-      from { opacity:0; transform: scale(0.88) translateY(16px); }
-      to   { opacity:1; transform: scale(1) translateY(0); }
-    }
-    .modal-check {
-      width: 72px; height: 72px;
-      background: #edfff4;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 2rem;
-    }
-    .modal-box h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--black);
-      margin-bottom: 10px;
-    }
-    .modal-box p {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 20px;
-    }
-    .modal-id-box {
-      background: #f4fdf7;
-      border: 1.5px solid #b6f0cb;
-      border-radius: 10px;
-      padding: 14px 20px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--green-dark);
-      letter-spacing: 0.08em;
-      margin-bottom: 28px;
-      display: inline-block;
-    }
-    .modal-btn {
-      background: var(--black);
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      padding: 16px 40px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .modal-btn:hover { background: var(--green-dark); }
+    /* ─── SUCCESS MODAL ─── */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(6px); z-index:9999; align-items:center; justify-content:center; padding:24px; }
+    .modal-overlay.open { display:flex; }
+    .modal-box { background:var(--white); border-radius:24px; padding:56px 48px; max-width:480px; width:100%; text-align:center; box-shadow:0 24px 80px rgba(0,0,0,0.25); animation:popIn .4s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes popIn { from{opacity:0;transform:scale(0.88) translateY(16px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .modal-check { width:72px; height:72px; background:#edfff4; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:2rem; }
+    .modal-box h3  { font-size:1.5rem; font-weight:800; color:var(--black); margin-bottom:10px; }
+    .modal-box p   { font-size:0.92rem; color:var(--muted); line-height:1.65; margin-bottom:20px; }
+    .modal-id-box  { background:#f4fdf7; border:1.5px solid #b6f0cb; border-radius:10px; padding:14px 20px; font-size:1.1rem; font-weight:700; color:var(--green-dark); letter-spacing:0.08em; margin-bottom:28px; display:inline-block; }
+    .modal-btn     { background:var(--black); color:var(--white); border:none; border-radius:12px; padding:16px 40px; font-family:'Outfit',sans-serif; font-size:0.9rem; font-weight:700; cursor:pointer; transition:background .2s; }
+    .modal-btn:hover { background:var(--green-dark); }
 
     /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp {
-      from { opacity:0; transform: translateY(20px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
     /* ─── RESPONSIVE ─── */
-    @media(max-width: 900px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      .section { padding: 64px 20px; }
-      .hiw-inner { padding: 64px 20px; }
-      .hiw-grid { grid-template-columns: 1fr 1fr; }
-      .hiw-card:first-child { border-radius: 12px 0 0 0; }
-      .hiw-card:last-child  { border-radius: 0 0 12px 0; }
-      .prize-inner { grid-template-columns: 1fr; padding: 64px 20px; gap: 48px; }
-      .register-inner { padding: 64px 20px; }
-      .form-box { padding: 32px 24px; }
-      .form-row { grid-template-columns: 1fr; }
-      .faq-inner { padding: 64px 20px; }
-      footer { padding: 40px 20px; }
-      .footer-links { display: none; }
-      .countdown-bar { padding: 20px 20px; gap: 16px; }
+    @media(max-width:900px) {
+      nav { padding:0 20px; }
+      .nav-links { display:none; }
+      .hiw-inner { padding:64px 20px; }
+      .hiw-grid  { grid-template-columns:1fr 1fr; }
+      .hiw-card:first-child { border-radius:12px 0 0 0; }
+      .hiw-card:last-child  { border-radius:0 0 12px 0; }
+      .prize-inner { grid-template-columns:1fr; padding:64px 20px; gap:48px; }
+      .register-inner { padding:64px 20px; }
+      .form-box { padding:32px 24px; }
+      .form-row { grid-template-columns:1fr; }
+      .terms-inner { padding:60px 20px; }
+      .faq-inner { padding:64px 20px; }
+      footer { padding:40px 20px; }
+      .footer-links { display:none; }
+      .countdown-bar { padding:20px; gap:16px; }
     }
-    @media(max-width: 600px) {
-      .hiw-grid { grid-template-columns: 1fr; }
-      .hiw-card:first-child, .hiw-card:last-child { border-radius: 0; }
-      .hiw-card:first-child { border-radius: 12px 12px 0 0; }
-      .hiw-card:last-child  { border-radius: 0 0 12px 12px; }
+    @media(max-width:600px) {
+      .hiw-grid { grid-template-columns:1fr; }
+      .hiw-card:first-child { border-radius:12px 12px 0 0; }
+      .hiw-card:last-child  { border-radius:0 0 12px 12px; }
+      .modal-box { padding:40px 24px; }
     }
   </style>
 </head>
@@ -772,13 +314,13 @@
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement">
   <div class="announcement-inner">
-    <span>🏆 SPERAX WALK TO WIN CHALLENGE 2025</span>
+    <span>🏆 SPERAX WALK TO WIN CHALLENGE 2026</span>
     <span>✦ WIN A $1,000 VISA GIFT CARD + FULL PURCHASE REBATE</span>
-    <span>✦ CHALLENGE ENDS MARCH 31ST · ENTER FREE</span>
+    <span>✦ NO PURCHASE NECESSARY · CHALLENGE ENDS MARCH 31ST</span>
     <span>✦ OVER 1,200 SPERAX OWNERS ALREADY REGISTERED</span>
-    <span>🏆 SPERAX WALK TO WIN CHALLENGE 2025</span>
+    <span>🏆 SPERAX WALK TO WIN CHALLENGE 2026</span>
     <span>✦ WIN A $1,000 VISA GIFT CARD + FULL PURCHASE REBATE</span>
-    <span>✦ CHALLENGE ENDS MARCH 31ST · ENTER FREE</span>
+    <span>✦ NO PURCHASE NECESSARY · CHALLENGE ENDS MARCH 31ST</span>
     <span>✦ OVER 1,200 SPERAX OWNERS ALREADY REGISTERED</span>
   </div>
 </div>
@@ -795,15 +337,16 @@
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#prizes">Prizes</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#register" class="nav-cta">Enter Now</a></li>
+    <li><a href="#register" class="nav-cta">Register Now</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">Official Sperax Promotion · Spring 2025</div>
+  <div class="hero-badge">Official Sperax Promotion · Spring 2026</div>
   <h1>WALK TO WIN<span class="line2">CHALLENGE</span></h1>
   <p class="hero-sub">You bought the pad. You started walking. Now Sperax wants to reward you for it — with up to $1,249 in prizes.</p>
+  <div class="npn-badge">★ No Purchase Necessary to Enter or Win</div>
 
   <div class="hero-prizes">
     <div class="prize-chip">
@@ -823,7 +366,7 @@
   </div>
 
   <div class="hero-actions">
-    <a href="#register" class="btn-green">Register Free — It Takes 60 Seconds</a>
+    <a href="#register" class="btn-green">Register Now — It's Free</a>
     <a href="#how-it-works" class="btn-outline-white">See How It Works</a>
   </div>
 </section>
@@ -832,25 +375,13 @@
 <div class="countdown-bar">
   <span class="countdown-label">⏱ Challenge closes in</span>
   <div class="countdown-units">
-    <div class="cd-unit">
-      <span class="cd-num" id="cd-days">--</span>
-      <span class="cd-label">Days</span>
-    </div>
+    <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
     <span class="cd-sep">:</span>
-    <div class="cd-unit">
-      <span class="cd-num" id="cd-hours">--</span>
-      <span class="cd-label">Hours</span>
-    </div>
+    <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Hours</span></div>
     <span class="cd-sep">:</span>
-    <div class="cd-unit">
-      <span class="cd-num" id="cd-mins">--</span>
-      <span class="cd-label">Mins</span>
-    </div>
+    <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">Mins</span></div>
     <span class="cd-sep">:</span>
-    <div class="cd-unit">
-      <span class="cd-num" id="cd-secs">--</span>
-      <span class="cd-label">Secs</span>
-    </div>
+    <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Secs</span></div>
   </div>
   <span class="countdown-label">Winners announced April 1st 🏆</span>
 </div>
@@ -865,8 +396,8 @@
       <div class="hiw-card">
         <div class="hiw-icon">📝</div>
         <div class="hiw-num">01</div>
-        <h3>Register Below</h3>
-        <p>Sign up with your name, email, and which Sperax product you own. You'll get your unique Participant ID immediately — save it.</p>
+        <h3>Register Now</h3>
+        <p>Sign up with your name, email, and Sperax product details. You'll get your unique Participant ID immediately — save it for your step submissions.</p>
       </div>
       <div class="hiw-card">
         <div class="hiw-icon">🚶</div>
@@ -878,13 +409,13 @@
         <div class="hiw-icon">📊</div>
         <div class="hiw-num">03</div>
         <h3>Submit Your Steps</h3>
-        <p>Log your weekly step total using the submission link we send to your email. Each week = one entry into the draw. 3 weeks = 3 entries.</p>
+        <p>Log your weekly step total using the submission link we send to your email. Each week = one entry. 3 weeks = 3 entries.</p>
       </div>
       <div class="hiw-card">
         <div class="hiw-icon">🏆</div>
         <div class="hiw-num">04</div>
         <h3>Win Big</h3>
-        <p>Three winners are drawn from all entries on April 1st and receive a $1,000 Visa gift card plus a full rebate on their Sperax purchase.</p>
+        <p>Three winners are drawn from all entries on April 1st and each receive a $1,000 Visa gift card plus a full rebate on their Sperax purchase.</p>
       </div>
     </div>
   </div>
@@ -898,7 +429,7 @@
         <div class="prize-card-icon">💳</div>
         <div>
           <div class="prize-card-val">$1,000</div>
-          <div class="prize-card-desc">Visa Gift Card<br>Spend it anywhere, on anything.</div>
+          <div class="prize-card-desc">Visa Gift Card — spend it anywhere, on anything.</div>
         </div>
       </div>
       <div class="prize-card">
@@ -908,7 +439,7 @@
           <div class="prize-card-desc">Your full purchase price back, applied to your original payment method within 5–7 business days.</div>
         </div>
       </div>
-      <div class="prize-card" style="border-color:rgba(59,223,122,0.25); background: rgba(59,223,122,0.04);">
+      <div class="prize-card" style="border-color:rgba(59,223,122,0.25);background:rgba(59,223,122,0.04);">
         <div class="prize-card-icon" style="background:rgba(59,223,122,0.1);">🎉</div>
         <div>
           <div class="prize-card-val">$1,249+</div>
@@ -919,15 +450,16 @@
     <div class="prize-text">
       <p class="section-eyebrow">The Prize</p>
       <h2 class="section-title">Get rewarded for the steps you're already taking.</h2>
-      <p class="section-body">At Sperax, we believe movement should be celebrated. The Spring Walk to Win Challenge is our way of saying thank you — and giving back big. Every Sperax owner who registers and logs their steps is entered into the draw. No tricks. No catches.</p>
+      <p class="section-body">At Sperax, we believe movement should be celebrated. The Spring Walk to Win Challenge is our way of saying thank you — and giving back big. Every participant who registers and logs their steps is entered into the draw. No tricks. No catches.</p>
       <div class="prize-total">
         <span class="prize-total-val">$1,249+</span>
         <span class="prize-total-label">per winner · 3 winners · April 1st</span>
       </div>
       <a href="#register" class="btn-green">I Want to Win →</a>
       <p class="terms-note">
-        * Open to verified Sperax product owners only.<br>
-        * One registration per customer. Winners notified April 1, 2025.<br>
+        * No purchase necessary to enter or win.<br>
+        * Open to US residents 18+ only. One registration per person.<br>
+        * Winners notified via email on April 1, 2026. Winners have 48 hours to respond.<br>
         * Rebate applied via original payment method. Visa gift card delivered digitally.
       </p>
     </div>
@@ -938,51 +470,160 @@
 <section id="register">
   <div class="register-inner">
     <p class="section-eyebrow" style="text-align:center;">Free Entry</p>
-    <h2 class="section-title">Register for the Challenge</h2>
-    <p class="section-body">Winners announced April 1st. Enter in under 60 seconds.</p>
+    <h2 class="section-title">Register Now</h2>
+    <p class="section-body">Winners announced April 1st. You'll receive a confirmation email with your Participant ID right away.</p>
     <div class="form-box">
-      <div class="form-row">
-        <div class="field-group">
-          <label>First Name</label>
-          <input type="text" id="fName" placeholder="Jane" />
+
+      <!--
+        ════════════════════════════════════════════════════════
+        FORMSPREE SETUP (takes 2 minutes):
+        1. Go to https://formspree.io and create a free account
+        2. Click "New Form", give it a name (e.g. "Walk to Win")
+        3. Copy your Form ID from the endpoint shown (e.g. "xdkozrpb")
+        4. Replace YOUR_FORM_ID below with your actual Form ID
+        5. In Formspree dashboard → your form → Settings:
+           • Add your email under "Email Notifications" so YOU get
+             an email every time someone registers
+           • Enable "Autoresponder" to send a confirmation email
+             to the registrant automatically
+        ════════════════════════════════════════════════════════
+      -->
+      <form id="challengeForm"
+            action="https://formspree.io/f/mreayapz"
+            method="POST">
+
+        <!-- Formspree config fields -->
+        <input type="hidden" name="_subject"  value="🏆 New Sperax Walk to Win Registration!" />
+        <input type="hidden" name="_replyto"  id="replyToEmail" value="" />
+        <input type="hidden" name="Participant ID" id="hiddenParticipantId" value="" />
+        <!-- Redirect after successful submission (optional — remove if using AJAX modal below) -->
+        <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html" /> -->
+
+        <div class="form-error" id="formError">Please fill in all required fields before submitting.</div>
+
+        <div class="form-row">
+          <div class="field-group">
+            <label>First Name *</label>
+            <input type="text" name="First Name" id="fName" placeholder="Jane" required />
+          </div>
+          <div class="field-group">
+            <label>Last Name *</label>
+            <input type="text" name="Last Name" id="lName" placeholder="Smith" required />
+          </div>
         </div>
+
         <div class="field-group">
-          <label>Last Name</label>
-          <input type="text" id="lName" placeholder="Smith" />
+          <label>Email Address *</label>
+          <input type="email" name="Email" id="emailIn" placeholder="you@example.com" required />
         </div>
-      </div>
-      <div class="field-group">
-        <label>Email Address</label>
-        <input type="email" id="emailIn" placeholder="you@example.com" />
-      </div>
-      <div class="field-group">
-        <label>Your Sperax Product</label>
-        <select id="productIn">
-          <option value="">— Select your model —</option>
-          <option>Sperax P1 Walking Vibration Pad</option>
-          <option>Sperax P2Pro Walking Vibration Pad</option>
-          <option>Sperax P2Max Walking Vibration Pad</option>
-          <option>Sperax P3Pro Walking Vibration Pad</option>
-          <option>Sperax 3-in-1 Walking Treadmill Pad</option>
-          <option>Sperax 4-in-1 Walking Vibration Pad Pro Max</option>
-          <option>Sperax Manual Incline Treadmill</option>
-          <option>Other Sperax Product</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Phone Number (optional — for winner notification)</label>
-        <input type="tel" id="phoneIn" placeholder="(555) 000-0000" />
-      </div>
-      <button class="form-submit-btn" onclick="submitForm()">
-        Claim My Spot &amp; Get My Participant ID →
-      </button>
+
+        <div class="field-group">
+          <label>Your Sperax Product *</label>
+          <select name="Sperax Product" id="productIn" required>
+            <option value="">— Select your model —</option>
+            <option>Sperax P1 Walking Vibration Pad</option>
+            <option>Sperax P2Pro Walking Vibration Pad</option>
+            <option>Sperax P2Max Walking Vibration Pad</option>
+            <option>Sperax P3Pro Walking Vibration Pad</option>
+            <option>Sperax 3-in-1 Walking Treadmill Pad</option>
+            <option>Sperax 4-in-1 Walking Vibration Pad Pro Max</option>
+            <option>Sperax Manual Incline Treadmill</option>
+            <option>Other Sperax Product</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>Date of Purchase *</label>
+          <input type="date" name="Date of Purchase" id="purchaseDate" required />
+        </div>
+
+        <div class="field-group">
+          <label>Phone Number <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.82rem;">(optional)</span></label>
+          <input type="tel" name="Phone Number" id="phoneIn" placeholder="(555) 000-0000" />
+        </div>
+
+        <button type="submit" class="form-submit-btn" id="submitBtn">
+          Claim My Spot &amp; Get My Participant ID →
+        </button>
+      </form>
+
       <p class="form-note">
-        🔒 Your info is never shared with third parties.<br>
-        Challenge runs March 10–31, 2025. Winners announced April 1st.
+        🔒 Your info is never shared with third parties. See our <a href="privacy-policy.html" style="color:var(--green-dark);">Privacy Policy</a>.<br>
+        No purchase necessary. Challenge runs March 10–31, 2026. Winners announced April 1st via email.<br>
+        By registering you agree to the <a href="#terms" style="color:var(--green-dark);">Official Challenge Rules</a>.
       </p>
     </div>
   </div>
 </section>
+
+<!-- TERMS & CONDITIONS -->
+<div class="terms-section" id="terms">
+  <div class="terms-inner">
+    <p class="section-eyebrow">Official Rules</p>
+    <h2 class="section-title">Terms &amp; Conditions</h2>
+
+    <div class="npn-callout">
+      ✅ <span>NO PURCHASE NECESSARY TO ENTER OR WIN. A purchase does not improve your chances of winning.</span>
+    </div>
+
+    <div class="terms-block">
+      <h3>1. Eligibility</h3>
+      <p>The Sperax Walk to Win Challenge ("Challenge") is open to legal residents of the United States who are 18 years of age or older at the time of entry. Employees, officers, directors, agents, and representatives of Sperax and their immediate family members are not eligible to enter. Void where prohibited by law.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>2. Challenge Period</h3>
+      <p>The Challenge begins on March 10, 2026 at 12:00 AM Eastern Time ("ET") and ends on March 31, 2026 at 11:59 PM ET ("Challenge Period"). Registrations must be submitted by March 25, 2026. Step submissions are accepted through March 31, 2026 at 11:59 PM ET. Entries received outside this period will not be eligible.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>3. How to Enter — No Purchase Necessary</h3>
+      <p>To enter, complete the registration form on this page during the Challenge Period. You must provide your full legal name, valid email address, Sperax product model, and date of purchase. No purchase is necessary to enter or win. To receive additional draw entries, submit your weekly step totals via the link sent to registered participants each Monday (up to 3 additional entries total, one per week). Limit one (1) registration per person. Duplicate registrations will be disqualified.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>4. Prize Description</h3>
+      <ul>
+        <li>Three (3) winners will each receive: (a) one (1) digital Visa Gift Card valued at $1,000 USD; and (b) a full rebate equal to the verified original purchase price of their Sperax product (maximum $499 USD).</li>
+        <li>Total approximate retail value (ARV) per prize package: up to $1,499 USD.</li>
+        <li>Prizes are non-transferable and may not be substituted or redeemed for cash except at Sperax's sole discretion.</li>
+        <li>All federal, state, and local taxes applicable to prizes are the sole responsibility of the winner.</li>
+      </ul>
+    </div>
+
+    <div class="terms-block">
+      <h3>5. Winner Selection &amp; Notification</h3>
+      <p>Three (3) winners will be selected by random draw from all eligible entries on or around April 1, 2026. Winners will be notified <strong>via email</strong> using the address provided at registration. Winners have forty-eight (48) hours from the time of notification to respond and confirm prize acceptance. Failure to respond within 48 hours may result in forfeiture and selection of an alternate winner. Sperax is not responsible for undelivered, misdirected, or delayed email notifications.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>6. Prize Delivery</h3>
+      <p>The digital Visa Gift Card will be emailed to the winner's registered email address within three (3) business days of winner confirmation. The purchase rebate will be applied to the original payment method used at time of Sperax purchase within five to seven (5–7) business days of confirmation. Winners must provide valid proof of purchase (order number or receipt) to claim the rebate portion of the prize.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>7. General Conditions</h3>
+      <ul>
+        <li>Sperax reserves the right to cancel, suspend, or modify the Challenge if fraud, technical failures, or any other factor beyond its reasonable control impairs the integrity or proper functioning of the Challenge.</li>
+        <li>Sperax is not responsible for lost, late, incomplete, invalid, unintelligible, or misdirected registrations or step submissions.</li>
+        <li>By participating, entrants agree to be bound by these Official Rules and the final decisions of Sperax in all matters related to the Challenge.</li>
+        <li>By accepting a prize, winners consent to use of their name and general likeness for promotional purposes without additional compensation, where permitted by applicable law.</li>
+        <li>This Challenge is governed by the laws of the United States. Any disputes shall be resolved in accordance with applicable US law.</li>
+        <li>Entrants release Sperax and its affiliates from any and all liability related to participation in this Challenge or the acceptance or use of any prize.</li>
+      </ul>
+    </div>
+
+    <div class="terms-block">
+      <h3>8. Privacy</h3>
+      <p>Personal information collected during this Challenge will be used solely for the administration of the Challenge and, with consent, for future Sperax communications. We will never sell or share your personal information with third parties. For full details, see our <a href="privacy-policy.html" style="color:var(--green-dark);font-weight:600;">Privacy Policy</a>.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>9. Limitation of Liability</h3>
+      <p>To the fullest extent permitted by applicable law, Sperax and its affiliates, officers, directors, employees, and agents shall not be liable for any injuries, losses, or damages of any kind arising in connection with or as a result of participation in this Challenge or acceptance, possession, or use of any prize.</p>
+    </div>
+  </div>
+</div>
 
 <!-- FAQ -->
 <div class="faq-section" id="faq">
@@ -992,52 +633,59 @@
 
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
+        Do I need to make a purchase to enter?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">No. No purchase is necessary to enter or win. Registration is completely free. A purchase does not increase your chances of winning.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
         Who is eligible to enter?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">Any verified Sperax product owner who registers between March 10–25, 2025. You must own and actively use a Sperax walking pad, treadmill, or fitness product. One registration per customer.</div>
+      <div class="faq-a">US residents 18 years of age or older who register between March 10–25, 2026. One registration per person. Sperax employees and their immediate family members are not eligible.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         How do I submit my steps each week?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">After registering, you'll receive a weekly step submission email every Monday. Click the link and enter your weekly step total — you can use the Sperax Fitness App, Apple Health, Google Fit, Fitbit, or any step-tracking device you prefer.</div>
+      <div class="faq-a">After registering, you'll receive a weekly step submission email every Monday. Click the link and enter your step total for that week. You can use the Sperax Fitness App, Apple Health, Google Fit, Fitbit, or any other step-tracking device.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         How are winners selected?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">Winners are chosen by randomized draw from the pool of all registered participants who submitted at least one valid step log. Every valid weekly submission counts as a separate entry — so up to 3 entries if you log all three weeks.</div>
+      <div class="faq-a">Winners are chosen by random draw from all eligible participants who submitted at least one valid weekly step log. Each weekly submission is a separate entry — submit all three weeks for maximum chances.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        When and how will winners be notified?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Winners will be notified via email on April 1, 2026 between 9:00 AM and 12:00 PM ET. Winners must respond within 48 hours to confirm their prize — failure to do so may result in an alternate winner being selected.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         How is the $1,000 Visa gift card delivered?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">Winners receive a digital Visa gift card sent directly to the email address provided at registration within 3 business days of winner confirmation. The gift card is valid at any retailer that accepts Visa.</div>
+      <div class="faq-a">Winners receive a digital Visa gift card sent to their registered email within 3 business days of confirming their win. It's valid at any retailer that accepts Visa.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         How does the purchase rebate work?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">The full purchase rebate is applied directly to the payment method used for your original Sperax order. You'll need to provide your order number for verification. Refunds are processed within 5–7 business days of winner confirmation.</div>
+      <div class="faq-a">The full purchase rebate is applied to the original payment method used for your Sperax order. Winners must provide their order number or proof of purchase for verification. Processed within 5–7 business days of confirmation.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
-        When will winners be announced?
+        Is there a minimum step count required?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">Winners will be contacted via email on April 1, 2025 between 9:00 AM and 12:00 PM EST. An announcement will also appear on this page. Winners have 48 hours to respond to confirm their prize.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Is there a minimum number of steps required to enter?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Nope! As long as you submit at least one weekly step log, you're entered. We encourage you to walk as much as possible — but there is no minimum step count requirement.</div>
+      <div class="faq-a">No minimum step count is required. As long as you submit at least one valid weekly step log, you're entered in the draw.</div>
     </div>
   </div>
 </div>
@@ -1052,14 +700,14 @@
       <span class="logo-text">Sperax</span>
     </div>
     <ul class="footer-links">
-      <li><a href="#">Shop Sperax</a></li>
-      <li><a href="#">Challenge Terms</a></li>
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="https://sperax.com" target="_blank">Shop Sperax</a></li>
+      <li><a href="#terms">Official Rules</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="mailto:challenge@speraxchallenge.com">Contact</a></li>
     </ul>
     <p class="footer-copy">
-      © 2025 Sperax Walk to Win Challenge · Official Sperax Spring Promotion<br>
-      Challenge open to verified Sperax product owners. See full terms on this page. Winners notified April 1, 2025.
+      © 2026 Sperax Walk to Win Challenge · Official Sperax Spring Promotion<br>
+      No purchase necessary to enter or win. Open to US residents 18+. See Official Rules for complete details. Winners notified via email on April 1, 2026.
     </p>
   </div>
 </footer>
@@ -1069,66 +717,111 @@
   <div class="modal-box">
     <div class="modal-check">✅</div>
     <h3>You're officially in!</h3>
-    <p>Welcome to the Sperax Walk to Win Challenge. Your unique Participant ID is below — you'll need this to submit your steps each week.</p>
-    <div class="modal-id-box" id="modalId">SPX-2025-4471</div>
-    <p style="margin-bottom:28px;">Watch your inbox for your <strong>weekly step submission links</strong> and challenge updates. The first one arrives March 10th.</p>
+    <p>Welcome to the Sperax Walk to Win Challenge! Your unique Participant ID is:</p>
+    <div class="modal-id-box" id="modalId">SPX-2026-4471</div>
+    <p style="margin-bottom:28px;">
+      A <strong>confirmation email</strong> is on its way to your inbox with your Participant ID and weekly step submission links.<br><br>
+      Watch for your first submission link the week of March 10th. Start warming up! 🚶
+    </p>
     <button class="modal-btn" onclick="closeModal()">Got it — Let's Walk! 🚶</button>
   </div>
 </div>
 
 <script>
-  // ── Countdown to March 31, 2025 11:59pm EST ──
-  const deadline = new Date('2026-04-01T03:59:00Z'); // March 31 11:59pm EST = April 1 03:59 UTC
+  // ─── Countdown to March 31 2026 11:59 PM EST (= April 1 2026 03:59:00 UTC) ───
+  const deadline = new Date('2026-04-01T03:59:00Z');
   function updateCountdown() {
-    const now  = new Date();
-    const diff = deadline - now;
+    const diff = deadline - new Date();
     if (diff <= 0) {
-      document.getElementById('cd-days').textContent  = '00';
-      document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent  = '00';
-      document.getElementById('cd-secs').textContent  = '00';
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+        document.getElementById(id).textContent = '00';
+      });
       return;
     }
-    const days  = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins  = Math.floor((diff % 3600000)  / 60000);
-    const secs  = Math.floor((diff % 60000)    / 1000);
-    document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
-    document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+    document.getElementById('cd-days').textContent  = String(Math.floor(diff / 86400000)).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+    document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+    document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // ── Form submission ──
-  function genId() {
-    return 'SPX-2025-' + (Math.floor(Math.random() * 5000) + 3000);
-  }
-  function submitForm() {
-    const fn = document.getElementById('fName').value.trim();
-    const ln = document.getElementById('lName').value.trim();
-    const em = document.getElementById('emailIn').value.trim();
-    const pr = document.getElementById('productIn').value;
-    if (!fn || !ln || !em || !pr) {
-      alert('Please fill in all required fields to register.');
+  // ─── Generate Participant ID on load, inject into hidden field + modal ───
+  const participantId = 'SPX-2026-' + (Math.floor(Math.random() * 5000) + 3000);
+  document.getElementById('hiddenParticipantId').value = participantId;
+  document.getElementById('modalId').textContent = participantId;
+
+  // ─── Formspree AJAX submission (keeps user on page, shows modal on success) ───
+  const form = document.getElementById('challengeForm');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const fn  = document.getElementById('fName').value.trim();
+    const ln  = document.getElementById('lName').value.trim();
+    const em  = document.getElementById('emailIn').value.trim();
+    const pr  = document.getElementById('productIn').value;
+    const dt  = document.getElementById('purchaseDate').value;
+    const err = document.getElementById('formError');
+
+    if (!fn || !ln || !em || !pr || !dt) {
+      err.textContent = 'Please fill in all required fields before submitting.';
+      err.classList.add('show');
+      err.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    document.getElementById('modalId').textContent = genId();
-    document.getElementById('successModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+    err.classList.remove('show');
+
+    // Sync _replyto so Formspree autoresponder emails the registrant
+    document.getElementById('replyToEmail').value = em;
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        document.getElementById('successModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        form.reset();
+        // Regenerate ID for any future submissions
+        document.getElementById('hiddenParticipantId').value = participantId;
+        btn.disabled = false;
+        btn.textContent = 'Claim My Spot & Get My Participant ID →';
+      } else {
+        const data = await response.json();
+        const msg = (data.errors && data.errors.map(e => e.message).join(', '))
+                    || 'Something went wrong. Please try again.';
+        err.textContent = msg;
+        err.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Claim My Spot & Get My Participant ID →';
+      }
+    } catch (error) {
+      err.textContent = 'Network error — please check your connection and try again.';
+      err.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = 'Claim My Spot & Get My Participant ID →';
+    }
+  });
+
+  // ─── Modal ───
   function closeModal() {
     document.getElementById('successModal').classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.getElementById('successModal').addEventListener('click', function(e) {
+  document.getElementById('successModal').addEventListener('click', function (e) {
     if (e.target === this) closeModal();
   });
 
-  // ── FAQ accordion ──
+  // ─── FAQ accordion ───
   function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
+    const item   = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');

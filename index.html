@@ -188,7 +188,7 @@
     .prize-stack   { display:flex; flex-direction:column; gap:16px; }
     .prize-card    { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:32px; display:flex; align-items:center; gap:24px; transition:border-color .3s, background .3s; }
     .prize-card:hover { border-color:rgba(232,37,26,0.4); background:rgba(232,37,26,0.04); }
-    .prize-card-icon { font-size:2rem; width:64px; height:64px; background:rgba(255,255,255,0.06); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .prize-card-icon { font-size:0.75rem; font-weight:800; letter-spacing:0.04em; width:64px; height:64px; background:rgba(255,255,255,0.06); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--green); }
     .prize-card-val  { font-size:2rem; font-weight:800; color:var(--green); line-height:1; }
     .prize-card-desc { font-size:0.82rem; color:#888; margin-top:4px; line-height:1.5; }
     .prize-text .section-eyebrow { color:var(--green); }
@@ -276,7 +276,7 @@
     .modal-overlay.open { display:flex; }
     .modal-box { background:var(--white); border-radius:24px; padding:56px 48px; max-width:480px; width:100%; text-align:center; box-shadow:0 24px 80px rgba(0,0,0,0.25); animation:popIn .4s cubic-bezier(0.34,1.56,0.64,1) both; }
     @keyframes popIn { from{opacity:0;transform:scale(0.88) translateY(16px)} to{opacity:1;transform:scale(1) translateY(0)} }
-    .modal-check { width:72px; height:72px; background:#fff0f0; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:2rem; }
+    .modal-check { width:72px; height:72px; background:#fff0f0; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:1.8rem; color:var(--green-dark); font-weight:700; }
     .modal-box h3  { font-size:1.5rem; font-weight:800; color:var(--black); margin-bottom:10px; }
     .modal-box p   { font-size:0.92rem; color:var(--muted); line-height:1.65; margin-bottom:20px; }
     .modal-id-box  { background:#fff5f5; border:1.5px solid #ffb3ae; border-radius:10px; padding:14px 20px; font-size:1.1rem; font-weight:700; color:var(--green-dark); letter-spacing:0.08em; margin-bottom:28px; display:inline-block; }
@@ -314,11 +314,11 @@
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement">
   <div class="announcement-inner">
-    <span>🏆 SPERAX WALK TO WIN CHALLENGE 2026</span>
+    <span>SPERAX WALK TO WIN CHALLENGE 2026</span>
     <span>✦ WIN A $1,000 VISA GIFT CARD + FULL PURCHASE REBATE</span>
     <span>✦ NO PURCHASE NECESSARY · CHALLENGE ENDS MARCH 31ST</span>
     <span>✦ OVER 1,200 SPERAX OWNERS ALREADY REGISTERED</span>
-    <span>🏆 SPERAX WALK TO WIN CHALLENGE 2026</span>
+    <span>SPERAX WALK TO WIN CHALLENGE 2026</span>
     <span>✦ WIN A $1,000 VISA GIFT CARD + FULL PURCHASE REBATE</span>
     <span>✦ NO PURCHASE NECESSARY · CHALLENGE ENDS MARCH 31ST</span>
     <span>✦ OVER 1,200 SPERAX OWNERS ALREADY REGISTERED</span>
@@ -368,7 +368,7 @@
   <div class="hero-badge">Official Sperax Promotion · Spring 2026</div>
   <h1>WALK TO WIN<span class="line2">CHALLENGE</span></h1>
   <p class="hero-sub">You bought the pad. You started walking. Now Sperax wants to reward you for it — with up to $1,249 in prizes.</p>
-  <div class="npn-badge">★ No Purchase Necessary to Enter or Win</div>
+  <div class="npn-badge">No Purchase Necessary to Enter or Win</div>
 
   <div class="hero-prizes">
     <div class="prize-chip">
@@ -395,7 +395,7 @@
 
 <!-- COUNTDOWN -->
 <div class="countdown-bar">
-  <span class="countdown-label">⏱ Challenge closes in</span>
+  <span class="countdown-label">Challenge closes in</span>
   <div class="countdown-units">
     <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
     <span class="cd-sep">:</span>
@@ -405,7 +405,7 @@
     <span class="cd-sep">:</span>
     <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Secs</span></div>
   </div>
-  <span class="countdown-label">Winners announced April 1st 🏆</span>
+  <span class="countdown-label">Winners announced April 1st</span>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -413,27 +413,27 @@
   <div class="hiw-inner">
     <p class="section-eyebrow">How It Works</p>
     <h2 class="section-title">Walk a little. Win a lot.</h2>
-    <p class="section-body" style="margin-bottom:0;">Register once, then log your steps each week for a chance to win. Every weekly submission is one entry into the draw.</p>
+    <p class="section-body" style="margin-bottom:0;">Register once, use your Sperax pad, and log your best session each week. Every submission is one entry into the draw — no step minimum, no judgment.</p>
     <div class="hiw-steps">
       <div class="hiw-step">
         <div class="hiw-dot">01</div>
         <h3>Register</h3>
-        <p>Sign up below with your name, email, and Sperax product info. Takes under 60 seconds.</p>
+        <p>Sign up below with your name, email, and Sperax product info. You'll receive your Participant ID by email immediately.</p>
       </div>
       <div class="hiw-step">
         <div class="hiw-dot">02</div>
-        <h3>Walk Daily</h3>
-        <p>Use your Sperax pad throughout the challenge — March 10 through March 31, 2026.</p>
+        <h3>Use Your Pad</h3>
+        <p>Walk on your Sperax pad anytime during the challenge — March 17 through March 31, 2026. Every session counts.</p>
       </div>
       <div class="hiw-step">
         <div class="hiw-dot">03</div>
-        <h3>Log Weekly</h3>
-        <p>Submit your step count once a week via the link we email you. Each weekly log = one draw entry.</p>
+        <h3>Log Your Best</h3>
+        <p>Each week you'll receive a submission link by email. Submit your best single-session step count from that week. Each submission earns one draw entry.</p>
       </div>
       <div class="hiw-step">
         <div class="hiw-dot">04</div>
-        <h3>We Draw</h3>
-        <p>On April 1st we draw winners from all entries. Three people win a $1,000 Visa gift card plus a full purchase rebate.</p>
+        <h3>Winners Drawn</h3>
+        <p>On April 1st, three winners are selected by random draw. Log both weeks and you'll have two entries — double your chances.</p>
       </div>
     </div>
   </div>
@@ -444,21 +444,21 @@
   <div class="prize-inner">
     <div class="prize-stack">
       <div class="prize-card">
-        <div class="prize-card-icon">💳</div>
+        <div class="prize-card-icon">$1K</div>
         <div>
           <div class="prize-card-val">$1,000</div>
           <div class="prize-card-desc">Visa Gift Card — spend it anywhere, on anything.</div>
         </div>
       </div>
       <div class="prize-card">
-        <div class="prize-card-icon">💸</div>
+        <div class="prize-card-icon">REBATE</div>
         <div>
-          <div class="prize-card-val">+ Full Rebate</div>
+          <div class="prize-card-val">Full Rebate</div>
           <div class="prize-card-desc">Your full purchase price back, applied to your original payment method within 5–7 business days.</div>
         </div>
       </div>
       <div class="prize-card" style="border-color:rgba(232,37,26,0.3);background:rgba(232,37,26,0.04);">
-        <div class="prize-card-icon" style="background:rgba(232,37,26,0.1);">🎉</div>
+        <div class="prize-card-icon" style="background:rgba(232,37,26,0.1); font-size:0.7rem; font-weight:800; letter-spacing:0.05em;">TOTAL</div>
         <div>
           <div class="prize-card-val">$1,249+</div>
           <div class="prize-card-desc">Total prize value per winner. Three winners selected.</div>
@@ -468,7 +468,7 @@
     <div class="prize-text">
       <p class="section-eyebrow">The Prize</p>
       <h2 class="section-title">Get rewarded for the steps you're already taking.</h2>
-      <p class="section-body">At Sperax, we believe movement should be celebrated. The Walk to Win Challenge is simple: register, walk, and log your steps once a week. Every weekly log you submit is one entry into the draw. Three winners are selected on April 1st. No tricks. No catches.</p>
+      <p class="section-body">The Walk to Win Challenge runs March 17–31, 2026. Register, use your pad, and log your best single-session step count once a week. It doesn't matter how many steps — any session counts as a submission, and every submission is one entry into the draw. Two weeks, up to two entries, one big reward.</p>
       <div class="prize-total">
         <span class="prize-total-val">$1,249+</span>
         <span class="prize-total-label">per winner · 3 winners · April 1st</span>
@@ -575,8 +575,8 @@
       </form>
 
       <p class="form-note">
-        🔒 Your info is never shared with third parties. See our <a href="privacy-policy.html" style="color:var(--green-dark);">Privacy Policy</a>.<br>
-        No purchase necessary. Challenge runs March 10–31, 2026. Winners announced April 1st via email.<br>
+        Your info is never shared with third parties. See our <a href="privacy-policy.html" style="color:var(--green-dark);">Privacy Policy</a>.<br>
+        No purchase necessary. Challenge runs March 17–31, 2026. Winners announced April 1st via email.<br>
         By registering you agree to the <a href="#terms" style="color:var(--green-dark);">Official Challenge Rules</a>.
       </p>
     </div>
@@ -590,7 +590,7 @@
     <h2 class="section-title">Terms &amp; Conditions</h2>
 
     <div class="npn-callout">
-      ✅ <span>NO PURCHASE NECESSARY TO ENTER OR WIN. A purchase does not improve your chances of winning.</span>
+      <span>NO PURCHASE NECESSARY TO ENTER OR WIN. A purchase does not improve your chances of winning.</span>
     </div>
 
     <div class="terms-block">
@@ -600,12 +600,12 @@
 
     <div class="terms-block">
       <h3>2. Challenge Period</h3>
-      <p>The Challenge begins on March 10, 2026 at 12:00 AM Eastern Time ("ET") and ends on March 31, 2026 at 11:59 PM ET ("Challenge Period"). Registrations must be submitted by March 25, 2026. Step submissions are accepted through March 31, 2026 at 11:59 PM ET. Entries received outside this period will not be eligible.</p>
+      <p>The Challenge begins on March 17, 2026 at 12:00 AM Eastern Time ("ET") and ends on March 31, 2026 at 11:59 PM ET ("Challenge Period"). Registrations must be submitted by March 24, 2026. Step submissions are accepted through March 31, 2026 at 11:59 PM ET. Entries received outside this period will not be eligible.</p>
     </div>
 
     <div class="terms-block">
       <h3>3. How to Enter — No Purchase Necessary</h3>
-      <p>To enter, complete the registration form on this page during the Challenge Period. You must provide your full legal name, valid email address, Sperax product model, and date of purchase. No purchase is necessary to enter or win. Once registered, you may submit one (1) step log per week via the link emailed to you each Monday during the Challenge Period, for a maximum of three (3) entries total. Each weekly step submission is one separate draw entry. Limit one (1) registration per person. Duplicate registrations will be disqualified.</p>
+      <p>To enter, complete the registration form on this page during the Challenge Period. You must provide your full legal name, valid email address, Sperax product model, and purchase retailer. No purchase is necessary to enter or win. Once registered, you may submit one (1) step log per week via the link emailed to you each Monday during the Challenge Period (March 17 and March 24, 2026). Each submission must include your best single-session step count from that week. Any step count is valid — there is no minimum. Each weekly submission constitutes one separate draw entry, for a maximum of two (2) entries total. Limit one (1) registration per person. Duplicate registrations will be disqualified.</p>
     </div>
 
     <div class="terms-block">
@@ -670,21 +670,21 @@
         Who is eligible to enter?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">US residents 18 years of age or older who register between March 10–25, 2026. One registration per person. Sperax employees and their immediate family members are not eligible.</div>
+      <div class="faq-a">US residents 18 years of age or older who register by March 24, 2026. One registration per person. Sperax employees and their immediate family members are not eligible.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         How do I submit my steps each week?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">After registering, you'll receive a step submission link by email each Monday during the challenge (March 10, 17, and 24). Click the link, enter your step total for that week, and you're entered. You can track steps with the Sperax Fitness App, Apple Health, Google Fit, Fitbit, or any step tracker. One submission per week maximum.</div>
+      <div class="faq-a">After registering, you'll receive a step submission link by email each Monday of the challenge (March 17 and March 24). Click the link and enter your best single-session step count from that week — any number counts. One submission per week, maximum two submissions total.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         How are winners selected?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">Winners are chosen by random draw from all weekly step log entries submitted across the three-week challenge. Each weekly submission you make is one entry — so you can earn up to three entries total by logging every week. More entries = more chances.</div>
+      <div class="faq-a">Winners are selected by random draw from all submitted weekly step logs. Each weekly submission is one entry — submit both weeks and you'll have two entries in the draw.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
@@ -745,15 +745,15 @@
 <!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="successModal">
   <div class="modal-box">
-    <div class="modal-check">✅</div>
+    <div class="modal-check">&#10003;</div>
     <h3>You're officially in!</h3>
-    <p>Welcome to the Sperax Walk to Win Challenge! Your unique Participant ID is:</p>
+    <p>Welcome to the Sperax Walk to Win Challenge. Your unique Participant ID is:</p>
     <div class="modal-id-box" id="modalId">SPX-2026-4471</div>
     <p style="margin-bottom:28px;">
-      A <strong>confirmation email</strong> is on its way to your inbox with your Participant ID and weekly step submission links.<br><br>
-      Watch for your first submission link the week of March 10th. Start warming up! 🚶
+      A <strong>confirmation email</strong> is on its way to your inbox with your Participant ID and step submission links.<br><br>
+      Your first submission link arrives Monday, March 17th. Start walking.
     </p>
-    <button class="modal-btn" onclick="closeModal()">Got it — Let's Walk! 🚶</button>
+    <button class="modal-btn" onclick="closeModal()">Got it — Let's Go</button>
   </div>
 </div>
 

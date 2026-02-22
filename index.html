@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sperax Walk to Win Challenge 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
       --green-dark: #28b85d;
       --gray:       #f2f2ef;
       --border:     #e8e8e4;
-      --muted:      #888884;
+      --muted:      #6b6b68;
       --text:       #1a1a1a;
     }
 
@@ -276,7 +276,7 @@
     .modal-check { width:72px; height:72px; background:#edfff4; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:2rem; }
     .modal-box h3  { font-size:1.5rem; font-weight:800; color:var(--black); margin-bottom:10px; }
     .modal-box p   { font-size:0.92rem; color:var(--muted); line-height:1.65; margin-bottom:20px; }
-    .modal-id-box  { background:#f4fdf7; border:1.5px solid #b6f0cb; border-radius:10px; padding:14px 20px; font-size:1.1rem; font-weight:700; color:var(--green-dark); letter-spacing:0.08em; margin-bottom:28px; display:inline-block; }
+    .modal-id-box  { background:#f4fdf7; border:1.5px solid #b6f0cb; border-radius:10px; padding:14px 20px; font-size:1.1rem; font-weight:700; color:var(--green-dark); letter-spacing:0.08em; margin-bottom:28px; display:inline-block; word-break: break-all; }
     .modal-btn     { background:var(--black); color:var(--white); border:none; border-radius:12px; padding:16px 40px; font-family:'Outfit',sans-serif; font-size:0.9rem; font-weight:700; cursor:pointer; transition:background .2s; }
     .modal-btn:hover { background:var(--green-dark); }
 
@@ -302,10 +302,81 @@
       .countdown-bar { padding:20px; gap:16px; }
     }
     @media(max-width:600px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-prizes {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .plus-sign {
+        transform: rotate(90deg);
+        font-size: 1.2rem;
+      }
+      
+      .prize-chip {
+        width: 100%;
+        max-width: 240px;
+      }
+      
       .hiw-grid { grid-template-columns:1fr; }
       .hiw-card:first-child { border-radius:12px 12px 0 0; }
       .hiw-card:last-child  { border-radius:0 0 12px 12px; }
-      .modal-box { padding:40px 24px; }
+      
+      .modal-box { 
+        padding: 32px 20px;
+        margin: 0 16px;
+      }
+      
+      .modal-id-box {
+        font-size: 0.95rem;
+        padding: 12px 16px;
+      }
+      
+      .form-box {
+        padding: 24px 16px;
+      }
+      
+      .field-group input,
+      .field-group select {
+        font-size: 16px;
+      }
+      
+      .countdown-bar {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .countdown-units {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .cd-unit {
+        min-width: 52px;
+        padding: 8px 12px;
+      }
+      
+      .cd-num {
+        font-size: 1.3rem;
+      }
+    }
+    
+    @media(max-width:380px) {
+      nav {
+        padding: 0 16px;
+      }
+      
+      .logo-text {
+        font-size: 1rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.7rem;
+      }
     }
   </style>
 </head>
@@ -474,53 +545,36 @@
     <p class="section-body">Winners announced April 1st. You'll receive a confirmation email with your Participant ID right away.</p>
     <div class="form-box">
 
-      <!--
-        ════════════════════════════════════════════════════════
-        FORMSPREE SETUP (takes 2 minutes):
-        1. Go to https://formspree.io and create a free account
-        2. Click "New Form", give it a name (e.g. "Walk to Win")
-        3. Copy your Form ID from the endpoint shown (e.g. "xdkozrpb")
-        4. Replace YOUR_FORM_ID below with your actual Form ID
-        5. In Formspree dashboard → your form → Settings:
-           • Add your email under "Email Notifications" so YOU get
-             an email every time someone registers
-           • Enable "Autoresponder" to send a confirmation email
-             to the registrant automatically
-        ════════════════════════════════════════════════════════
-      -->
       <form id="challengeForm"
             action="https://formspree.io/f/mreayapz"
             method="POST">
 
-        <!-- Formspree config fields -->
-        <input type="hidden" name="_subject"  value="🏆 New Sperax Walk to Win Registration!" />
-        <input type="hidden" name="_replyto"  id="replyToEmail" value="" />
-        <input type="hidden" name="Participant ID" id="hiddenParticipantId" value="" />
-        <!-- Redirect after successful submission (optional — remove if using AJAX modal below) -->
-        <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html" /> -->
+        <input type="hidden" name="_subject"  value="🏆 New Sperax Walk to Win Registration!" >
+        <input type="hidden" name="_replyto"  id="replyToEmail" value="">
+        <input type="hidden" name="Participant ID" id="hiddenParticipantId" value="">
 
         <div class="form-error" id="formError">Please fill in all required fields before submitting.</div>
 
         <div class="form-row">
           <div class="field-group">
             <label>First Name *</label>
-            <input type="text" name="First Name" id="fName" placeholder="Jane" required />
+            <input type="text" name="First Name" id="fName" placeholder="Jane" required>
           </div>
           <div class="field-group">
             <label>Last Name *</label>
-            <input type="text" name="Last Name" id="lName" placeholder="Smith" required />
+            <input type="text" name="Last Name" id="lName" placeholder="Smith" required>
           </div>
         </div>
 
         <div class="field-group">
           <label>Email Address *</label>
-          <input type="email" name="Email" id="emailIn" placeholder="you@example.com" required />
+          <input type="email" name="Email" id="emailIn" placeholder="you@example.com" required>
         </div>
 
         <div class="field-group">
           <label>Your Sperax Product *</label>
           <select name="Sperax Product" id="productIn" required>
-            <option value="">— Select your model —</option>
+            <option value="" disabled selected>— Select your model —</option>
             <option>Sperax P1 Walking Vibration Pad</option>
             <option>Sperax P2Pro Walking Vibration Pad</option>
             <option>Sperax P2Max Walking Vibration Pad</option>
@@ -534,12 +588,12 @@
 
         <div class="field-group">
           <label>Date of Purchase *</label>
-          <input type="date" name="Date of Purchase" id="purchaseDate" required />
+          <input type="date" name="Date of Purchase" id="purchaseDate" required>
         </div>
 
         <div class="field-group">
           <label>Phone Number <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.82rem;">(optional)</span></label>
-          <input type="tel" name="Phone Number" id="phoneIn" placeholder="(555) 000-0000" />
+          <input type="tel" name="Phone Number" id="phoneIn" placeholder="(555) 000-0000">
         </div>
 
         <button type="submit" class="form-submit-btn" id="submitBtn">
@@ -718,7 +772,7 @@
     <div class="modal-check">✅</div>
     <h3>You're officially in!</h3>
     <p>Welcome to the Sperax Walk to Win Challenge! Your unique Participant ID is:</p>
-    <div class="modal-id-box" id="modalId">SPX-2026-4471</div>
+    <div class="modal-id-box" id="modalId">Loading...</div>
     <p style="margin-bottom:28px;">
       A <strong>confirmation email</strong> is on its way to your inbox with your Participant ID and weekly step submission links.<br><br>
       Watch for your first submission link the week of March 10th. Start warming up! 🚶
@@ -730,24 +784,43 @@
 <script>
   // ─── Countdown to March 31 2026 11:59 PM EST (= April 1 2026 03:59:00 UTC) ───
   const deadline = new Date('2026-04-01T03:59:00Z');
+  
   function updateCountdown() {
-    const diff = deadline - new Date();
+    const now = new Date();
+    const diff = deadline - now;
+    
+    // Debug logging (remove after testing)
+    if (diff > 0 && document.getElementById('cd-days').textContent === '--') {
+      console.log('Countdown Debug:', {
+        'Current time': now.toISOString(),
+        'Deadline': deadline.toISOString(),
+        'Time difference (ms)': diff,
+        'Days remaining': Math.floor(diff / 86400000)
+      });
+    }
+    
     if (diff <= 0) {
       ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
         document.getElementById(id).textContent = '00';
       });
       return;
     }
+    
     document.getElementById('cd-days').textContent  = String(Math.floor(diff / 86400000)).padStart(2, '0');
     document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
     document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
     document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
   }
+  
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
   // ─── Generate Participant ID on load, inject into hidden field + modal ───
-  const participantId = 'SPX-2026-' + (Math.floor(Math.random() * 5000) + 3000);
+  function generateParticipantId() {
+    return 'SPX-2026-' + (Math.floor(Math.random() * 5000) + 3000);
+  }
+  
+  let participantId = generateParticipantId();
   document.getElementById('hiddenParticipantId').value = participantId;
   document.getElementById('modalId').textContent = participantId;
 
@@ -789,8 +862,11 @@
         document.getElementById('successModal').classList.add('open');
         document.body.style.overflow = 'hidden';
         form.reset();
-        // Regenerate ID for any future submissions
+        
+        // Generate NEW ID for next submission
+        participantId = generateParticipantId();
         document.getElementById('hiddenParticipantId').value = participantId;
+        
         btn.disabled = false;
         btn.textContent = 'Claim My Spot & Get My Participant ID →';
       } else {

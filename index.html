@@ -734,28 +734,37 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 03:59:00 UTC) ───
   (function() {
-    const deadline = new Date('2026-04-01T03:59:00Z');
-    const ids = ['cd-days','cd-hours','cd-mins','cd-secs'];
+    var deadline = new Date('2026-04-01T03:59:00Z');
+
+    function pad(n) { return String(n).padStart(2,'0'); }
 
     function updateCountdown() {
-      const diff = deadline - new Date();
+      var now  = new Date();
+      var diff = deadline - now;
       if (diff <= 0) {
-        ids.forEach(id => document.getElementById(id).textContent = '00');
+        document.getElementById('cd-days').textContent  = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent  = '00';
+        document.getElementById('cd-secs').textContent  = '00';
         clearInterval(timer);
         return;
       }
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-      document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-      document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-      document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
-      document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+      document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
     }
 
-    updateCountdown();
-    var timer = setInterval(updateCountdown, 1000);
+    // Wait for DOM before touching any elements
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        updateCountdown();
+        var timer = setInterval(updateCountdown, 1000);
+      });
+    } else {
+      updateCountdown();
+      var timer = setInterval(updateCountdown, 1000);
+    }
   })();
 
   // ─── Generate Participant ID on load, inject into hidden field + modal ───

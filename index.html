@@ -758,9 +758,9 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 03:59:00 UTC) ───
+  // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 04:59:00 UTC) ───
   (function() {
-    var deadline = new Date('2026-04-01T03:59:00Z');
+    var deadline = new Date('2026-04-01T04:59:00Z');
     var timer = null; // declared in OUTER scope so updateCountdown can access it
 
     function pad(n) { return String(n).padStart(2, '0'); }
@@ -881,4 +881,10 @@
   function toggleFaq(btn) {
     const item   = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
-    doc
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>

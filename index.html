@@ -799,19 +799,17 @@
     <p>Welcome to the Sperax Walk to Win Challenge. Your unique Participant ID is:</p>
     <div class="modal-id-box" id="modalId">SPX-2026-4471</div>
     <p style="margin-bottom:28px;">
-      A <strong>confirmation email</strong> is on its way to your inbox with your Participant ID and step submission links.<br><br>
-      Your first submission link arrives Monday, March 17th. Start walking.
+      A <strong>confirmation email</strong> is on its way to your inbox with your Participant ID.<br><br>
+      <strong>Write this ID down</strong> — you'll need it every time you log a session on the submission page. Starting March 17th, visit the <a href="submit-steps.html" style="color:var(--green-dark);font-weight:600;">Submit Steps page</a> after each walk and enter your ID to record your entry.
     </p>
     <button class="modal-btn" onclick="closeModal()">Got it — Let's Go</button>
   </div>
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ─── Countdown to March 31, 2026 11:59:59 PM EDT ───
+  // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 03:59:00 UTC) ───
   (function() {
-    // March 31, 2026 at 11:59:59 PM EDT (UTC-4)
-    // In UTC, this is April 1, 2026 at 03:59:59 AM
-    var deadline = new Date('2026-04-01T03:59:59Z');
+    var deadline = new Date('2026-04-01T03:59:00Z');
     var timer = null; // declared in OUTER scope so updateCountdown can access it
 
     function pad(n) { return String(n).padStart(2, '0'); }
@@ -899,37 +897,48 @@
         document.body.style.overflow = 'hidden';
         form.reset();
         // Regenerate ID for any future submissions
-        document.getElementById('hiddenParticipantId').value = 'SPX-2026-' + (Math.floor(Math.random() * 5000) + 3000);
+        document.getElementById('hiddenParticipantId').value = participantId;
+        btn.disabled = false;
+        btn.textContent = 'Claim My Spot & Get My Participant ID →';
       } else {
         const data = await response.json();
-        err.textContent = data.errors && data.errors.map(e => e.message).join(', ') || 'Submission failed. Please try again.';
+        const msg = (data.errors && data.errors.map(e => e.message).join(', '))
+                    || 'Something went wrong. Please try again.';
+        err.textContent = msg;
         err.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Claim My Spot & Get My Participant ID →';
       }
     } catch (error) {
-      err.textContent = 'Network error. Please check your connection and try again.';
+      err.textContent = 'Network error — please check your connection and try again.';
       err.classList.add('show');
-    } finally {
       btn.disabled = false;
       btn.textContent = 'Claim My Spot & Get My Participant ID →';
     }
   });
 
-  // ─── FAQ accordion ───
-  function toggleFaq(button) {
-    const item = button.parentElement;
-    const wasOpen = item.classList.contains('open');
-    // Close all
-    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
-    // Toggle current
-    if (!wasOpen) item.classList.add('open');
-  }
-
-  // ─── Close modal ───
+  // ─── Modal ───
   function closeModal() {
     document.getElementById('successModal').classList.remove('open');
     document.body.style.overflow = '';
   }
-</script>
+  document.getElementById('successModal').addEventListener('click', function (e) {
+    if (e.target === this) closeModal();
+  });
 
+  // ─── FAQ accordion ───
+  function toggleFaq(btn) {
+    const item   = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all open items
+    document.querySelectorAll('.faq-item.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    // Open this one if it wasn't already open
+    if (!isOpen) {
+      item.classList.add('open');
+    }
+  }
+</script>
 </body>
 </html>

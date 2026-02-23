@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Your Steps — Sperax Walk to Win Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --black:      #0d0d0d;
+      --off-white:  #f8f8f6;
+      --white:      #ffffff;
+      --red:        #e8251a;
+      --red-dark:   #c41a10;
+      --gray:       #f2f2ef;
+      --border:     #e8e8e4;
+      --muted:      #888884;
+      --text:       #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 68px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    }
+    .nav-logo { display:flex; align-items:center; text-decoration:none; }
+    .back-link {
+      font-size:0.82rem; font-weight:500; color:var(--muted);
+      text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .2s;
+    }
+    .back-link:hover { color:var(--text); }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      background: var(--black);
+      color: var(--white);
+      padding: 52px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content:''; position:absolute; inset:0;
+      background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(232,37,26,0.08) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .page-header-inner { max-width: 640px; margin: 0 auto; text-align: center; position: relative; }
+    .header-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(232,37,26,0.15); border:1px solid rgba(232,37,26,0.3);
+      color:var(--red); font-size:0.7rem; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:20px;
+    }
+    .header-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--red); animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .page-header h1 { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; letter-spacing:-0.02em; line-height:1.1; }
+    .page-header h1 span { color:var(--red); }
+    .page-header p { font-size:0.95rem; color:#888; margin-top:12px; line-height:1.7; }
+
+    /* ─── WEEK INDICATOR ─── */
+    .week-tabs {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 32px 24px 0;
+      display: flex;
+      gap: 12px;
+    }
+    .week-tab {
+      flex:1; padding:14px 16px; border-radius:12px; text-align:center;
+      border:1.5px solid var(--border); background:var(--white);
+      font-size:0.8rem; font-weight:600; color:var(--muted); cursor:default;
+      transition: all .2s;
+    }
+    .week-tab.active {
+      border-color:var(--red);
+      background:var(--white);
+      color:var(--text);
+      box-shadow:0 2px 16px rgba(232,37,26,0.12);
+    }
+    .week-tab.active .week-label { color:var(--red); }
+    .week-tab.complete {
+      border-color:#d4edda;
+      background:#f6fff8;
+      color:#2d6a4f;
+    }
+    .week-tab.complete .week-label { color:#2d6a4f; }
+    .week-tab .week-num { font-size:1rem; font-weight:800; display:block; margin-bottom:2px; color:inherit; }
+    .week-tab .week-label { font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; }
+    .week-tab .week-dates { font-size:0.72rem; color:var(--muted); margin-top:4px; font-weight:400; }
+    .week-tab.active .week-dates { color:var(--muted); }
+
+    /* ─── MAIN FORM CARD ─── */
+    .form-wrap {
+      max-width: 640px;
+      margin: 24px auto 64px;
+      padding: 0 24px;
+      flex: 1;
+    }
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 44px 48px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.04);
+    }
+
+    .form-section-label {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--muted); margin-bottom:20px; padding-bottom:12px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .field-group { margin-bottom:18px; }
+    .field-group label {
+      display:block; font-size:0.75rem; font-weight:600; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--muted); margin-bottom:8px;
+    }
+    .field-group input {
+      width:100%; background:var(--off-white); border:1.5px solid var(--border);
+      border-radius:10px; padding:14px 18px; font-family:'Outfit',sans-serif;
+      font-size:0.95rem; color:var(--text); outline:none;
+      transition:border-color .2s, box-shadow .2s;
+    }
+    .field-group input:focus {
+      border-color:var(--red-dark);
+      box-shadow:0 0 0 3px rgba(232,37,26,0.1);
+    }
+    .field-group input::placeholder { color:#ccc; }
+    .field-hint {
+      font-size:0.72rem; color:var(--muted); margin-top:6px; line-height:1.5;
+    }
+
+    /* ─── STEP COUNT INPUT ─── */
+    .steps-input-wrap { position: relative; }
+    .steps-input-wrap input {
+      font-size:1.6rem;
+      font-weight:700;
+      text-align:center;
+      letter-spacing:0.04em;
+      padding:20px 72px 20px 18px;
+      color:var(--text);
+    }
+    .steps-unit {
+      position:absolute; right:18px; top:50%; transform:translateY(-50%);
+      font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--muted);
+    }
+    .steps-note {
+      display:flex; align-items:center; gap:8px;
+      background:#f8f8f6; border:1px solid var(--border); border-radius:10px;
+      padding:12px 16px; margin-top:12px; font-size:0.8rem; color:var(--muted); line-height:1.5;
+    }
+    .steps-note-icon {
+      width:20px; height:20px; min-width:20px; border-radius:50%;
+      background:var(--border); display:flex; align-items:center; justify-content:center;
+      font-size:0.65rem; font-weight:800; color:var(--muted);
+    }
+
+    /* ─── DIVIDER ─── */
+    .form-divider { border:none; border-top:1px solid var(--border); margin:28px 0; }
+
+    /* ─── SUBMIT BUTTON ─── */
+    .submit-btn {
+      width:100%; padding:18px; font-family:'Outfit',sans-serif; font-size:1rem;
+      font-weight:700; background:var(--black); color:var(--white); border:none;
+      border-radius:12px; cursor:pointer; letter-spacing:0.02em;
+      transition:background .2s, transform .15s, box-shadow .2s; margin-top:8px;
+    }
+    .submit-btn:hover { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(196,26,16,0.25); }
+    .submit-btn:disabled { background:#ccc; cursor:not-allowed; transform:none; box-shadow:none; }
+
+    /* ─── ERROR / ALREADY SUBMITTED ─── */
+    .form-error {
+      display:none; background:#fff0f0; border:1.5px solid #ffb3b3;
+      border-radius:10px; padding:14px 18px; font-size:0.85rem;
+      color:#c0392b; margin-bottom:18px; line-height:1.5;
+    }
+    .form-error.show { display:block; }
+    .already-submitted {
+      display:none; background:#fff8e6; border:1.5px solid #ffd166;
+      border-radius:10px; padding:14px 18px; font-size:0.85rem;
+      color:#856404; margin-bottom:18px; line-height:1.5;
+    }
+    .already-submitted.show { display:block; }
+
+    /* ─── SUCCESS STATE ─── */
+    .success-state {
+      display:none; text-align:center; padding:20px 0;
+    }
+    .success-state.show { display:block; }
+    .success-icon {
+      width:72px; height:72px; background:#fff0f0; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 20px; font-size:1.8rem; color:var(--red-dark); font-weight:700;
+    }
+    .success-state h3 { font-size:1.4rem; font-weight:800; margin-bottom:10px; }
+    .success-state p  { font-size:0.9rem; color:var(--muted); line-height:1.7; max-width:380px; margin:0 auto; }
+    .entry-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:#fff0f0; border:1.5px solid rgba(232,37,26,0.25);
+      border-radius:100px; padding:8px 20px; margin:20px auto 0;
+      font-size:0.8rem; font-weight:700; color:var(--red-dark); letter-spacing:0.04em;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background:var(--black); color:var(--white);
+      padding:32px 48px; text-align:center;
+    }
+    footer p { font-size:0.75rem; color:#444; line-height:1.7; }
+    footer a { color:#555; text-decoration:none; transition:color .2s; }
+    footer a:hover { color:var(--white); }
+
+    @media(max-width:680px) {
+      nav { padding:0 20px; }
+      .page-header { padding:40px 20px 36px; }
+      .week-tabs { padding:24px 16px 0; }
+      .form-wrap { padding:0 16px; margin-bottom:48px; }
+      .form-card { padding:32px 24px; }
+      footer { padding:28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg height="38" viewBox="0 0 200 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="22" r="20" fill="#FF2A2A"/>
+      <polygon points="28,4  33,8  24,20  30,20  15,38  10,34  19,22  13,22" fill="white"/>
+      <polygon points="29,3  34,3  35,8  30,8" fill="#FF2A2A"/>
+      <polygon points="9,35  14,39  11,43  6,39" fill="#123A7A"/>
+      <text x="50" y="29" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="21" fill="#0d0d0d">Sperax</text>
+    </svg>
+  </a>
+  <a href="index.html" class="back-link">← Back to Challenge</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="header-badge">
+      <div class="header-badge-dot"></div>
+      Walk to Win Challenge · Spring 2026
+    </div>
+    <h1>Submit Your <span>Steps</span></h1>
+    <p>Enter your Participant ID and last name to verify your entry, then log your best single-session step count for this week. Any step count counts.</p>
+  </div>
+</div>
+
+<!-- WEEK INDICATOR -->
+<div class="week-tabs">
+  <div class="week-tab active" id="week1-tab">
+    <span class="week-num">Week 1</span>
+    <span class="week-label">Now Open</span>
+    <div class="week-dates">March 17 – 23</div>
+  </div>
+  <div class="week-tab" id="week2-tab">
+    <span class="week-num">Week 2</span>
+    <span class="week-label">Opens March 24</span>
+    <div class="week-dates">March 24 – 31</div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="form-wrap">
+  <div class="form-card">
+
+    <!-- Error states -->
+    <div class="form-error" id="formError"></div>
+    <div class="already-submitted" id="alreadySubmitted">
+      You've already submitted your steps for this week. Check back on Monday, March 24th to log Week 2.
+    </div>
+
+    <!-- Form -->
+    <form id="submitForm" action="https://formspree.io/f/mreayapz" method="POST">
+
+      <!-- Hidden fields -->
+      <input type="hidden" name="_subject" value="Step Submission — Walk to Win Challenge" />
+      <input type="hidden" name="_replyto" id="replyToHidden" value="" />
+      <input type="hidden" name="Submission Week" id="weekField" value="Week 1 (March 17–23)" />
+
+      <p class="form-section-label">Verify Your Identity</p>
+
+      <div class="field-group">
+        <label>Participant ID *</label>
+        <input type="text" name="Participant ID" id="participantId"
+               placeholder="SPX-2026-" maxlength="14" required />
+        <p class="field-hint">Your Participant ID was sent to you in your registration confirmation email.</p>
+      </div>
+
+      <div class="field-group">
+        <label>Last Name *</label>
+        <input type="text" name="Last Name" id="lastName"
+               placeholder="Smith" required />
+        <p class="field-hint">Must match the last name you registered with.</p>
+      </div>
+
+      <hr class="form-divider" />
+
+      <p class="form-section-label">Your Best Session This Week</p>
+
+      <div class="field-group">
+        <label>Best Single-Session Step Count *</label>
+        <div class="steps-input-wrap">
+          <input type="number" name="Step Count" id="stepCount"
+                 placeholder="0" min="1" max="99999" required />
+          <span class="steps-unit">steps</span>
+        </div>
+        <div class="steps-note">
+          <div class="steps-note-icon">i</div>
+          Any step count qualifies — it doesn't matter how many. Just showing up and walking is what earns your entry.
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        Submit My Steps — Earn My Entry
+      </button>
+
+    </form>
+
+    <!-- Success state (replaces form on submit) -->
+    <div class="success-state" id="successState">
+      <div class="success-icon">&#10003;</div>
+      <h3>Entry confirmed.</h3>
+      <p>Your Week 1 step count has been logged and your entry is in the draw. Keep walking — your Week 2 submission window opens Monday, March 24th.</p>
+      <div class="entry-badge">Entry 1 of 2 recorded</div>
+    </div>
+
+  </div>
+
+  <!-- Fine print -->
+  <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;">
+    One submission per person per week. Submissions close March 31, 2026 at 11:59 PM ET.<br>
+    Winners drawn April 1st and notified by email. See <a href="index.html#terms" style="color:var(--red-dark);">Official Rules</a> for full details.
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    © 2026 Sperax Walk to Win Challenge &nbsp;·&nbsp;
+    <a href="index.html">Back to Challenge</a> &nbsp;·&nbsp;
+    <a href="index.html#terms">Official Rules</a> &nbsp;·&nbsp;
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </p>
+  <p style="margin-top:6px;">No purchase necessary to enter or win. Open to US residents 18+.</p>
+</footer>
+
+<script>
+  // ─── Week state ───
+  // Set which week is active based on current date
+  (function() {
+    var now  = new Date();
+    var week2Start = new Date('2026-03-24T00:00:00-05:00');
+    var challengeEnd = new Date('2026-03-31T23:59:00-05:00');
+
+    var tab1 = document.getElementById('week1-tab');
+    var tab2 = document.getElementById('week2-tab');
+    var weekField = document.getElementById('weekField');
+    var alreadyMsg = document.getElementById('alreadySubmitted');
+
+    if (now >= week2Start && now <= challengeEnd) {
+      // Week 2 is active
+      tab1.classList.remove('active');
+      tab1.classList.add('complete');
+      tab1.querySelector('.week-label').textContent = 'Complete';
+      tab2.classList.add('active');
+      tab2.querySelector('.week-label').textContent = 'Now Open';
+      weekField.value = 'Week 2 (March 24–31)';
+      alreadyMsg.textContent = 'You\'ve already submitted your steps for Week 2. Winners will be drawn on April 1st — good luck!';
+      // Update success message for week 2
+      document.querySelector('.success-state p').textContent =
+        'Your Week 2 step count has been logged and your entry is in the draw. Winners are announced on April 1st — good luck!';
+      document.querySelector('.entry-badge').textContent = 'Entry 2 of 2 recorded';
+    } else if (now > challengeEnd) {
+      // Challenge over
+      tab1.classList.remove('active'); tab1.classList.add('complete');
+      tab2.classList.remove('active'); tab2.classList.add('complete');
+      tab1.querySelector('.week-label').textContent = 'Complete';
+      tab2.querySelector('.week-label').textContent = 'Complete';
+      document.getElementById('submitBtn').disabled = true;
+      document.getElementById('submitBtn').textContent = 'Challenge Closed — Winners Announced April 1st';
+    }
+  })();
+
+  // ─── Participant ID auto-format ───
+  var pidInput = document.getElementById('participantId');
+  pidInput.addEventListener('input', function() {
+    var val = this.value.toUpperCase().replace(/[^A-Z0-9\-]/g,'');
+    // Auto-prefix SPX-2026- if they start typing numbers
+    if (val.length > 0 && !val.startsWith('SPX')) {
+      val = 'SPX-2026-' + val.replace(/[^0-9]/g,'');
+    }
+    this.value = val;
+  });
+
+  // ─── Form submission ───
+  var form = document.getElementById('submitForm');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    var pid   = document.getElementById('participantId').value.trim().toUpperCase();
+    var last  = document.getElementById('lastName').value.trim();
+    var steps = document.getElementById('stepCount').value.trim();
+    var err   = document.getElementById('formError');
+
+    // Basic validation
+    err.classList.remove('show');
+
+    if (!pid || !last || !steps) {
+      err.textContent = 'Please fill in all fields before submitting.';
+      err.classList.add('show');
+      return;
+    }
+
+    // Validate Participant ID format
+    if (!/^SPX-2026-\d{4,5}$/.test(pid)) {
+      err.textContent = 'Please enter a valid Participant ID (format: SPX-2026-XXXX). Check your registration email.';
+      err.classList.add('show');
+      return;
+    }
+
+    if (parseInt(steps) < 1) {
+      err.textContent = 'Please enter a step count greater than 0.';
+      err.classList.add('show');
+      return;
+    }
+
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    try {
+      var response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // Hide form, show success
+        form.style.display = 'none';
+        err.classList.remove('show');
+        document.getElementById('successState').classList.add('show');
+      } else {
+        var data = await response.json();
+        var msg = (data.errors && data.errors.map(function(e){ return e.message; }).join(', '))
+                  || 'Something went wrong. Please try again.';
+        err.textContent = msg;
+        err.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Submit My Steps — Earn My Entry';
+      }
+    } catch(error) {
+      err.textContent = 'Network error — please check your connection and try again.';
+      err.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = 'Submit My Steps — Earn My Entry';
+    }
+  });
+</script>
+</body>
+</html>

@@ -170,7 +170,7 @@
     <div class="page-header-inner">
       <div class="header-badge"><div class="header-badge-dot"></div>Walk to Win &middot; Spring 2026</div>
       <h1>Log Your <span>Session</span></h1>
-      <p>Enter your Participant ID and last name to verify, pick your session date, and submit your step count. Any number of steps counts as an entry.</p>
+      <p>Enter your Participant ID and last name to verify, pick today's date, and log your step count. One submission per day earns one entry — steps don't matter, just showing up does.</p>
     </div>
   </div>
 
@@ -204,7 +204,7 @@
         <div class="field-group">
           <label>Session Date *</label>
           <input type="date" name="Session Date" id="sessionDate" required />
-          <p class="field-hint">Defaults to today. Logging a past session? That works too.</p>
+          <p class="field-hint">Defaults to today. One entry per calendar day.</p>
         </div>
 
         <div class="field-group" style="margin-top:20px;">
@@ -215,7 +215,7 @@
           </div>
           <div class="steps-note">
             <div class="steps-note-icon">i</div>
-            Any step count qualifies. 200 steps or 10,000 &mdash; if you used the pad, it counts as an entry.
+            Any step count qualifies. One log per day earns one entry &mdash; the draw is random, so 50 steps counts just as much as 5,000.
           </div>
         </div>
 
@@ -227,7 +227,7 @@
       <div class="success-state" id="successState">
         <div class="success-icon">&#10003;</div>
         <h3>Session logged.</h3>
-        <p>Your entry is in the draw. Come back after your next session and log it too &mdash; every submission is another chance to win.</p>
+        <p>Your entry for today is in the draw. Come back tomorrow after your next walk and log again &mdash; one log per day, up to 15 entries total.</p>
         <div class="entry-badge">Entry recorded &rarr; April 1st draw</div><br/>
         <button class="submit-another" onclick="resetForm()">Log Another Session</button>
       </div>

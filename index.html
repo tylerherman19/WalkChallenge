@@ -102,7 +102,7 @@
       text-transform:uppercase; padding:7px 18px; border-radius:100px;
       margin-bottom:32px; animation:fadeUp .7s ease both;
     }
-    .hero-badge::before { content:'●'; font-size:0.5rem; animation:pulse 2s infinite; }
+    .hero-badge::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; display:inline-block; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
     .hero h1 {
@@ -445,7 +445,7 @@
   <div class="hiw-inner">
     <p class="section-eyebrow">How It Works</p>
     <h2 class="section-title">Walk a little. Win a lot.</h2>
-    <p class="section-body" style="margin-bottom:0;">Register once, use your Sperax pad, and log your best session each week. Every submission is one entry into the draw — no step minimum, no judgment.</p>
+    <p class="section-body" style="margin-bottom:0;">Register once, use your Sperax pad, and log each session as you go. Every submission is one entry into the draw — no step minimum, no judgment. Walk every day and rack up entries.</p>
     <div class="hiw-steps">
       <div class="hiw-step">
         <div class="hiw-dot">01</div>
@@ -459,13 +459,13 @@
       </div>
       <div class="hiw-step">
         <div class="hiw-dot">03</div>
-        <h3>Log Your Best</h3>
-        <p>Starting March 17th, visit the <a href="submit-steps.html" style="color:var(--green-dark);font-weight:600;">Step Submission page</a>, enter your Participant ID and last name, and log your best single-session step count from that week. Each submission earns one entry.</p>
+        <h3>Log Each Session</h3>
+        <p>After each walk, visit the <a href="submit-steps.html" style="color:var(--green-dark);font-weight:600;">Step Submission page</a>, enter your Participant ID and last name, pick the date, and log your step count. Each submission is one draw entry.</p>
       </div>
       <div class="hiw-step">
         <div class="hiw-dot">04</div>
         <h3>Winners Drawn</h3>
-        <p>On April 1st, three winners are selected by random draw. Log both weeks and you'll have two entries — double your chances.</p>
+        <p>On April 1st, three winners are selected by random draw from all entries. The more sessions you log, the more chances you have.</p>
       </div>
     </div>
   </div>
@@ -477,7 +477,7 @@
     <div class="submit-banner-left">
       <p class="submit-banner-eyebrow">Already Registered?</p>
       <h3>Ready to log your steps?</h3>
-      <p>The submission portal opens March 17th. Each week you'll visit this page, verify your identity with your Participant ID and last name, and log your best session. Two weeks, two chances to win.</p>
+      <p>The submission portal opens March 17th. After each walk, come back here, verify with your Participant ID and last name, pick the date, and log your session. Every submission is a separate draw entry — walk daily and maximize your chances.</p>
     </div>
     <div class="submit-banner-right">
       <a href="submit-steps.html" class="btn-submit-steps">
@@ -517,10 +517,10 @@
     <div class="prize-text">
       <p class="section-eyebrow">The Prize</p>
       <h2 class="section-title">Get rewarded for the steps you're already taking.</h2>
-      <p class="section-body">The Walk to Win Challenge runs March 17–31, 2026. Register, use your pad, and log your best single-session step count once a week. It doesn't matter how many steps — any session counts as a submission, and every submission is one entry into the draw. Two weeks, up to two entries, one big reward.</p>
+      <p class="section-body">The Walk to Win Challenge runs March 17–31, 2026. Register, use your pad, and log each session right after you walk. It doesn't matter how many steps — any session counts as an entry. Walk every day and you could have up to 15 entries in the draw.</p>
       <div class="prize-total">
         <span class="prize-total-val">$1,249+</span>
-        <span class="prize-total-label">per winner · 3 winners · April 1st</span>
+        <span class="prize-total-label">per winner · 3 winners · up to 15 entries</span>
       </div>
       <a href="#register" class="btn-green">I Want to Win →</a>
       <p class="terms-note">
@@ -560,7 +560,7 @@
             method="POST">
 
         <!-- Formspree config fields -->
-        <input type="hidden" name="_subject"  value="🏆 New Sperax Walk to Win Registration!" />
+        <input type="hidden" name="_subject"  value="New Sperax Walk to Win Registration!" />
         <input type="hidden" name="_replyto"  id="replyToEmail" value="" />
         <input type="hidden" name="Participant ID" id="hiddenParticipantId" value="" />
         <!-- Redirect after successful submission (optional — remove if using AJAX modal below) -->
@@ -654,7 +654,7 @@
 
     <div class="terms-block">
       <h3>3. How to Enter — No Purchase Necessary</h3>
-      <p>To enter, complete the registration form on this page during the Challenge Period. You must provide your full legal name, valid email address, Sperax product model, and purchase retailer. No purchase is necessary to enter or win. Once registered, you may submit one (1) step log per week via the link emailed to you each Monday during the Challenge Period (March 17 and March 24, 2026). Each submission must include your best single-session step count from that week. Any step count is valid — there is no minimum. Each weekly submission constitutes one separate draw entry, for a maximum of two (2) entries total. Limit one (1) registration per person. Duplicate registrations will be disqualified.</p>
+      <p>To enter, complete the registration form on this page during the Challenge Period. You must provide your full legal name, valid email address, Sperax product model, and purchase retailer. No purchase is necessary to enter or win. Once registered, you may submit one (1) step log per walking session via the Step Submission page at speraxchallenge.com/submit-steps.html. Each submission must include the date of the session and your step count for that session. Any step count is valid — there is no minimum. Each submission constitutes one separate draw entry. There is no limit on the number of submissions per day. Limit one (1) registration per person. Duplicate registrations will be disqualified.</p>
     </div>
 
     <div class="terms-block">
@@ -726,14 +726,14 @@
         How do I submit my steps each week?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">After registering, you'll receive a step submission link by email each Monday of the challenge (March 17 and March 24). Click the link and enter your best single-session step count from that week — any number counts. One submission per week, maximum two submissions total.</div>
+      <div class="faq-a">After each walking session, visit speraxchallenge.com/submit-steps.html. Enter your Participant ID and last name to verify your identity, select the date of your session, and enter your step count. Any step count qualifies — it just needs to be a real session. Each submission earns one entry into the draw.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         How are winners selected?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">Winners are selected by random draw from all submitted weekly step logs. Each weekly submission is one entry — submit both weeks and you'll have two entries in the draw.</div>
+      <div class="faq-a">Winners are selected by random draw from all submitted session entries. Every session you log is one entry — submit every day of the challenge and you could have up to 15 entries. The more you walk and log, the better your odds.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
@@ -761,7 +761,7 @@
         Is there a minimum step count required?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">No minimum. As long as you submit your weekly step log, it counts as an entry. Walk as little or as much as you like — every entry has an equal chance of winning.</div>
+      <div class="faq-a">No minimum. Any session, any step count — if you walked, it counts. Submit as many sessions as you like. Each one is a separate entry in the draw.</div>
     </div>
   </div>
 </div>

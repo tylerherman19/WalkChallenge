@@ -807,9 +807,11 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 03:59:00 UTC) ───
+  // ─── Countdown to March 31, 2026 11:59:59 PM EDT ───
   (function() {
-    var deadline = new Date('2026-04-01T03:59:00Z');
+    // March 31, 2026 at 11:59:59 PM EDT (UTC-4)
+    // In UTC, this is April 1, 2026 at 03:59:59 AM
+    var deadline = new Date('2026-04-01T03:59:59Z');
     var timer = null; // declared in OUTER scope so updateCountdown can access it
 
     function pad(n) { return String(n).padStart(2, '0'); }
@@ -897,37 +899,37 @@
         document.body.style.overflow = 'hidden';
         form.reset();
         // Regenerate ID for any future submissions
-        document.getElementById('hiddenParticipantId').value = participantId;
-        btn.disabled = false;
-        btn.textContent = 'Claim My Spot & Get My Participant ID →';
+        document.getElementById('hiddenParticipantId').value = 'SPX-2026-' + (Math.floor(Math.random() * 5000) + 3000);
       } else {
         const data = await response.json();
-        const msg = (data.errors && data.errors.map(e => e.message).join(', '))
-                    || 'Something went wrong. Please try again.';
-        err.textContent = msg;
+        err.textContent = data.errors && data.errors.map(e => e.message).join(', ') || 'Submission failed. Please try again.';
         err.classList.add('show');
-        btn.disabled = false;
-        btn.textContent = 'Claim My Spot & Get My Participant ID →';
       }
     } catch (error) {
-      err.textContent = 'Network error — please check your connection and try again.';
+      err.textContent = 'Network error. Please check your connection and try again.';
       err.classList.add('show');
+    } finally {
       btn.disabled = false;
       btn.textContent = 'Claim My Spot & Get My Participant ID →';
     }
   });
 
-  // ─── Modal ───
+  // ─── FAQ accordion ───
+  function toggleFaq(button) {
+    const item = button.parentElement;
+    const wasOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+    // Toggle current
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // ─── Close modal ───
   function closeModal() {
     document.getElementById('successModal').classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.getElementById('successModal').addEventListener('click', function (e) {
-    if (e.target === this) closeModal();
-  });
+</script>
 
-  // ─── FAQ accordion ───
-  function toggleFaq(btn) {
-    const item   = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    doc
+</body>
+</html>

@@ -807,9 +807,9 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ─── Countdown to March 31 2026 11:59 PM CT (April 1 2026 04:59:00 UTC) ───
+  // ─── Countdown to March 31 2026 midnight ET (April 1 2026 04:00:00 UTC) ───
   (function() {
-    var deadline = new Date('2026-04-01T04:59:00Z');
+    var deadline = new Date('2026-04-01T04:00:00Z');
     var timer = null; // declared in OUTER scope so updateCountdown can access it
 
     function pad(n) { return String(n).padStart(2, '0'); }
@@ -894,7 +894,7 @@
 
       if (response.ok) {
         document.getElementById('successModal').classList.add('open');
-        document.getElementById('challengeForm').reset();
+        document.body.style.overflow = 'hidden';
       } else {
         const data = await response.json();
         const msg = (data.errors && data.errors.map(e => e.message).join(', ')) || 'Something went wrong. Please try again.';
@@ -903,7 +903,7 @@
         btn.disabled = false;
         btn.textContent = 'Claim My Spot & Get My Participant ID →';
       }
-    } catch (e) {
+    } catch (error) {
       err.textContent = 'Network error — please check your connection and try again.';
       err.classList.add('show');
       btn.disabled = false;
@@ -911,19 +911,21 @@
     }
   });
 
-  // ─── Close modal ───
   function closeModal() {
     document.getElementById('successModal').classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('challengeForm').reset();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = false;
+    btn.textContent = 'Claim My Spot & Get My Participant ID →';
   }
-  document.getElementById('successModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
 
-  // ─── FAQ toggle ───
   function toggleFaq(btn) {
-    btn.parentElement.classList.toggle('open');
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
   }
 </script>
-
 </body>
 </html>

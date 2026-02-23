@@ -235,7 +235,7 @@
     </div>
 
     <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;">
-      Challenge runs March 17&ndash;31, 2026. Submissions close March 31 at 11:59 PM ET.<br>
+      Challenge runs March 17&ndash;31, 2026. Submissions close March 31 at 11:59 PM CT.<br>
       Winners drawn April 1st and notified by email. See <a href="index.html#terms" style="color:var(--red-dark);">Official Rules</a>.
     </p>
   </div>
@@ -270,7 +270,7 @@
 (function() {
 
   var OPEN  = new Date('2026-03-17T00:00:00-05:00');
-  var CLOSE = new Date('2026-03-31T23:59:59-05:00');
+  var CLOSE = new Date('2026-04-01T04:59:00Z');
   var now   = new Date();
 
   function pad(n) { return String(n).padStart(2,'0'); }
@@ -289,7 +289,7 @@
     btn.textContent = 'Challenge Closed \u2014 Winners Announced April 1st';
   }
 
-  // ── Not-open countdown ─────────────────────────────────────
+  // ── Not-open countdown ─────────────────────────
   function runNotOpenCountdown() {
     var timer = null;
     function tick() {
@@ -317,16 +317,16 @@
   var defaultDate = (now >= OPEN && now <= CLOSE) ? now : OPEN;
   dateInput.value = toYMD(defaultDate);
   dateInput.min   = toYMD(OPEN);
-  dateInput.max   = toYMD(CLOSE);
+  dateInput.max   = '2026-03-31';
 
-  // ── Participant ID auto-format ──────────────────────────────
+  // ── Participant ID auto-format ──────────────────────
   document.getElementById('participantId').addEventListener('input', function() {
     var v = this.value.toUpperCase().replace(/[^A-Z0-9\-]/g,'');
     if (v.length > 0 && !/^S/.test(v)) { v = 'SPX-2026-' + v.replace(/[^0-9]/g,''); }
     this.value = v;
   });
 
-  // ── Snarky messages for past-date submissions ───────────────
+  // ── Snarky messages for past-date submissions ─────────────
   var snarky = {
     1: { tag:'One Day Late',    title:"Yesterday's steps, today's entry.",        body:"We'll allow it. The effort happened \u2014 the entry counts." },
     2: { tag:'Two Days Late',   title:"A couple days late to log it.",             body:"That's fine. The session still happened and your entry is still valid." },
@@ -335,7 +335,7 @@
     fallback: { tag:'Late Entry', title:"That's ambitious record-keeping.",        body:"Digging through the archives? The session still counts \u2014 submitting it now." }
   };
 
-  // ── Submit handler ──────────────────────────────────────────
+  // ── Submit handler ──────────────────────────────
   window.handleSubmit = function() {
     var pid   = document.getElementById('participantId').value.trim().toUpperCase();
     var last  = document.getElementById('lastName').value.trim();
@@ -376,7 +376,7 @@
   window.closeSnarky = function() { document.getElementById('snarkyModal').classList.remove('open'); };
   document.getElementById('snarkyModal').addEventListener('click', function(e) { if (e.target === this) closeSnarky(); });
 
-  // ── Formspree submission ────────────────────────────────────
+  // ── Formspree submission ────────────────────────────
   async function doSubmit() {
     var btn  = document.getElementById('submitBtn');
     var err  = document.getElementById('formError');
@@ -401,7 +401,7 @@
     }
   }
 
-  // ── Reset for another session ───────────────────────────────
+  // ── Reset for another session ───────────────────────────
   window.resetForm = function() {
     var form = document.getElementById('submitForm');
     form.reset();

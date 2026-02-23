@@ -807,9 +807,9 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ─── Countdown to March 31 2026 midnight ET (April 1 2026 04:00:00 UTC) ───
+  // ─── Countdown to March 31 2026 11:59 PM ET (April 1 2026 03:59:00 UTC) ───
   (function() {
-    var deadline = new Date('2026-04-01T04:00:00Z');
+    var deadline = new Date('2026-04-01T03:59:00Z');
     var timer = null; // declared in OUTER scope so updateCountdown can access it
 
     function pad(n) { return String(n).padStart(2, '0'); }
@@ -897,13 +897,13 @@
         document.body.style.overflow = 'hidden';
       } else {
         const data = await response.json();
-        const msg = (data.errors && data.errors.map(e => e.message).join(', ')) || 'Something went wrong. Please try again.';
+        const msg = data.errors ? data.errors.map(e => e.message).join(', ') : 'Something went wrong. Please try again.';
         err.textContent = msg;
         err.classList.add('show');
         btn.disabled = false;
         btn.textContent = 'Claim My Spot & Get My Participant ID →';
       }
-    } catch (error) {
+    } catch (e) {
       err.textContent = 'Network error — please check your connection and try again.';
       err.classList.add('show');
       btn.disabled = false;
@@ -920,10 +920,11 @@
     btn.textContent = 'Claim My Spot & Get My Participant ID →';
   }
 
+  // FAQ accordion
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   }
 </script>

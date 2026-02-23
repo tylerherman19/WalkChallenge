@@ -7,223 +7,105 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
     :root {
-      --black:      #0d0d0d;
-      --off-white:  #f8f8f6;
-      --white:      #ffffff;
-      --red:        #e8251a;
-      --red-dark:   #c41a10;
-      --gray:       #f2f2ef;
-      --border:     #e8e8e4;
-      --muted:      #888884;
-      --text:       #1a1a1a;
+      --black:    #0d0d0d;
+      --off-white:#f8f8f6;
+      --white:    #ffffff;
+      --red:      #e8251a;
+      --red-dark: #c41a10;
+      --border:   #e8e8e4;
+      --muted:    #888884;
+      --text:     #1a1a1a;
     }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Outfit',sans-serif; background:var(--off-white); color:var(--text); min-height:100vh; display:flex; flex-direction:column; }
 
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--off-white);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 68px;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-    }
+    /* NAV */
+    nav { background:var(--white); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 48px; height:68px; box-shadow:0 1px 8px rgba(0,0,0,0.04); }
     .nav-logo { display:flex; align-items:center; text-decoration:none; }
-    .back-link {
-      font-size:0.82rem; font-weight:500; color:var(--muted);
-      text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .2s;
-    }
+    .back-link { font-size:0.82rem; font-weight:500; color:var(--muted); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .2s; }
     .back-link:hover { color:var(--text); }
 
-    /* ─── PAGE HEADER ─── */
-    .page-header {
-      background: var(--black);
-      color: var(--white);
-      padding: 52px 48px 48px;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-header::before {
-      content:''; position:absolute; inset:0;
-      background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(232,37,26,0.08) 0%, transparent 70%);
-      pointer-events:none;
-    }
-    .page-header-inner { max-width: 640px; margin: 0 auto; text-align: center; position: relative; }
-    .header-badge {
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(232,37,26,0.15); border:1px solid rgba(232,37,26,0.3);
-      color:var(--red); font-size:0.7rem; font-weight:700; letter-spacing:0.16em;
-      text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:20px;
-    }
-    .header-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--red); animation:pulse 2s infinite; }
+    /* NOT-OPEN MODAL */
+    .not-open-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(8px); z-index:9999; align-items:center; justify-content:center; padding:24px; }
+    .not-open-overlay.open { display:flex; }
+    .not-open-box { background:var(--white); border-radius:24px; padding:52px 48px; max-width:460px; width:100%; text-align:center; box-shadow:0 24px 80px rgba(0,0,0,0.25); animation:popIn .35s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes popIn { from{opacity:0;transform:scale(0.88) translateY(16px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .not-open-icon { width:72px; height:72px; border-radius:50%; background:var(--black); display:flex; align-items:center; justify-content:center; margin:0 auto 24px; }
+    .not-open-box h3 { font-size:1.5rem; font-weight:800; color:var(--black); margin-bottom:10px; letter-spacing:-0.01em; }
+    .not-open-box p { font-size:0.9rem; color:var(--muted); line-height:1.7; margin-bottom:8px; }
+    .not-open-countdown { display:flex; justify-content:center; gap:0; margin:24px 0 28px; }
+    .not-open-cd-unit { text-align:center; padding:0 12px; }
+    .not-open-cd-num { font-size:2.4rem; font-weight:800; color:var(--black); line-height:1; display:block; letter-spacing:-0.03em; }
+    .not-open-cd-label { font-size:0.62rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-top:5px; display:block; }
+    .not-open-cd-sep { font-size:2rem; font-weight:300; color:var(--border); padding-top:6px; line-height:1; }
+    .not-open-actions { display:flex; flex-direction:column; gap:10px; }
+    .btn-go-register { background:var(--black); color:var(--white); text-decoration:none; display:block; padding:16px; border-radius:12px; font-family:'Outfit',sans-serif; font-size:0.92rem; font-weight:700; cursor:pointer; letter-spacing:0.02em; transition:background .2s; border:none; }
+    .btn-go-register:hover { background:var(--red-dark); }
+    .btn-dismiss { background:none; color:var(--muted); border:1.5px solid var(--border); padding:13px; border-radius:12px; font-family:'Outfit',sans-serif; font-size:0.85rem; font-weight:600; cursor:pointer; transition:border-color .2s, color .2s; }
+    .btn-dismiss:hover { border-color:var(--text); color:var(--text); }
+
+    /* PAGE HEADER */
+    .page-header { background:var(--black); color:var(--white); padding:52px 48px 48px; position:relative; overflow:hidden; }
+    .page-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 50% 80% at 80% 50%, rgba(232,37,26,0.08) 0%, transparent 70%); pointer-events:none; }
+    .page-header-inner { max-width:640px; margin:0 auto; text-align:center; position:relative; }
+    .header-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(232,37,26,0.15); border:1px solid rgba(232,37,26,0.3); color:var(--red); font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:20px; }
+    .header-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--red); flex-shrink:0; animation:pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
     .page-header h1 { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; letter-spacing:-0.02em; line-height:1.1; }
     .page-header h1 span { color:var(--red); }
     .page-header p { font-size:0.95rem; color:#888; margin-top:12px; line-height:1.7; }
 
-    /* ─── WEEK INDICATOR ─── */
-    .week-tabs {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 32px 24px 0;
-      display: flex;
-      gap: 12px;
-    }
-    .week-tab {
-      flex:1; padding:14px 16px; border-radius:12px; text-align:center;
-      border:1.5px solid var(--border); background:var(--white);
-      font-size:0.8rem; font-weight:600; color:var(--muted); cursor:default;
-      transition: all .2s;
-    }
-    .week-tab.active {
-      border-color:var(--red);
-      background:var(--white);
-      color:var(--text);
-      box-shadow:0 2px 16px rgba(232,37,26,0.12);
-    }
-    .week-tab.active .week-label { color:var(--red); }
-    .week-tab.complete {
-      border-color:#d4edda;
-      background:#f6fff8;
-      color:#2d6a4f;
-    }
-    .week-tab.complete .week-label { color:#2d6a4f; }
-    .week-tab .week-num { font-size:1rem; font-weight:800; display:block; margin-bottom:2px; color:inherit; }
-    .week-tab .week-label { font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; }
-    .week-tab .week-dates { font-size:0.72rem; color:var(--muted); margin-top:4px; font-weight:400; }
-    .week-tab.active .week-dates { color:var(--muted); }
-
-    /* ─── MAIN FORM CARD ─── */
-    .form-wrap {
-      max-width: 640px;
-      margin: 24px auto 64px;
-      padding: 0 24px;
-      flex: 1;
-    }
-    .form-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 44px 48px;
-      box-shadow: 0 2px 24px rgba(0,0,0,0.04);
-    }
-
-    .form-section-label {
-      font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
-      color:var(--muted); margin-bottom:20px; padding-bottom:12px;
-      border-bottom:1px solid var(--border);
-    }
-
+    /* FORM CARD */
+    .form-wrap { max-width:640px; margin:40px auto 64px; padding:0 24px; flex:1; }
+    .form-card { background:var(--white); border:1px solid var(--border); border-radius:20px; padding:44px 48px; box-shadow:0 2px 24px rgba(0,0,0,0.04); }
+    .form-section-label { font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border); }
     .field-group { margin-bottom:18px; }
-    .field-group label {
-      display:block; font-size:0.75rem; font-weight:600; letter-spacing:0.1em;
-      text-transform:uppercase; color:var(--muted); margin-bottom:8px;
-    }
-    .field-group input {
-      width:100%; background:var(--off-white); border:1.5px solid var(--border);
-      border-radius:10px; padding:14px 18px; font-family:'Outfit',sans-serif;
-      font-size:0.95rem; color:var(--text); outline:none;
-      transition:border-color .2s, box-shadow .2s;
-    }
-    .field-group input:focus {
-      border-color:var(--red-dark);
-      box-shadow:0 0 0 3px rgba(232,37,26,0.1);
-    }
+    .field-group label { display:block; font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+    .field-group input { width:100%; background:var(--off-white); border:1.5px solid var(--border); border-radius:10px; padding:14px 18px; font-family:'Outfit',sans-serif; font-size:0.95rem; color:var(--text); outline:none; transition:border-color .2s, box-shadow .2s; }
+    .field-group input:focus { border-color:var(--red-dark); box-shadow:0 0 0 3px rgba(232,37,26,0.1); }
     .field-group input::placeholder { color:#ccc; }
-    .field-hint {
-      font-size:0.72rem; color:var(--muted); margin-top:6px; line-height:1.5;
-    }
-
-    /* ─── STEP COUNT INPUT ─── */
-    .steps-input-wrap { position: relative; }
-    .steps-input-wrap input {
-      font-size:1.6rem;
-      font-weight:700;
-      text-align:center;
-      letter-spacing:0.04em;
-      padding:20px 72px 20px 18px;
-      color:var(--text);
-    }
-    .steps-unit {
-      position:absolute; right:18px; top:50%; transform:translateY(-50%);
-      font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
-      color:var(--muted);
-    }
-    .steps-note {
-      display:flex; align-items:center; gap:8px;
-      background:#f8f8f6; border:1px solid var(--border); border-radius:10px;
-      padding:12px 16px; margin-top:12px; font-size:0.8rem; color:var(--muted); line-height:1.5;
-    }
-    .steps-note-icon {
-      width:20px; height:20px; min-width:20px; border-radius:50%;
-      background:var(--border); display:flex; align-items:center; justify-content:center;
-      font-size:0.65rem; font-weight:800; color:var(--muted);
-    }
-
-    /* ─── DIVIDER ─── */
+    .field-hint { font-size:0.72rem; color:var(--muted); margin-top:6px; line-height:1.5; }
+    .steps-input-wrap { position:relative; }
+    .steps-input-wrap input { font-size:1.6rem; font-weight:700; text-align:center; letter-spacing:0.04em; padding:20px 72px 20px 18px; }
+    .steps-unit { position:absolute; right:18px; top:50%; transform:translateY(-50%); font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+    .steps-note { display:flex; align-items:flex-start; gap:8px; background:var(--off-white); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-top:12px; font-size:0.8rem; color:var(--muted); line-height:1.5; }
+    .steps-note-icon { width:20px; height:20px; min-width:20px; border-radius:50%; background:var(--border); display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:800; color:var(--muted); margin-top:1px; flex-shrink:0; }
     .form-divider { border:none; border-top:1px solid var(--border); margin:28px 0; }
-
-    /* ─── SUBMIT BUTTON ─── */
-    .submit-btn {
-      width:100%; padding:18px; font-family:'Outfit',sans-serif; font-size:1rem;
-      font-weight:700; background:var(--black); color:var(--white); border:none;
-      border-radius:12px; cursor:pointer; letter-spacing:0.02em;
-      transition:background .2s, transform .15s, box-shadow .2s; margin-top:8px;
-    }
+    .form-error { display:none; background:#fff0f0; border:1.5px solid #ffb3b3; border-radius:10px; padding:14px 18px; font-size:0.85rem; color:#c0392b; margin-bottom:18px; line-height:1.5; }
+    .form-error.show { display:block; }
+    .submit-btn { width:100%; padding:18px; font-family:'Outfit',sans-serif; font-size:1rem; font-weight:700; background:var(--black); color:var(--white); border:none; border-radius:12px; cursor:pointer; letter-spacing:0.02em; transition:background .2s, transform .15s, box-shadow .2s; margin-top:8px; }
     .submit-btn:hover { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(196,26,16,0.25); }
     .submit-btn:disabled { background:#ccc; cursor:not-allowed; transform:none; box-shadow:none; }
 
-    /* ─── ERROR / ALREADY SUBMITTED ─── */
-    .form-error {
-      display:none; background:#fff0f0; border:1.5px solid #ffb3b3;
-      border-radius:10px; padding:14px 18px; font-size:0.85rem;
-      color:#c0392b; margin-bottom:18px; line-height:1.5;
-    }
-    .form-error.show { display:block; }
-    .already-submitted {
-      display:none; background:#fff8e6; border:1.5px solid #ffd166;
-      border-radius:10px; padding:14px 18px; font-size:0.85rem;
-      color:#856404; margin-bottom:18px; line-height:1.5;
-    }
-    .already-submitted.show { display:block; }
-
-    /* ─── SUCCESS STATE ─── */
-    .success-state {
-      display:none; text-align:center; padding:20px 0;
-    }
+    /* SUCCESS */
+    .success-state { display:none; text-align:center; padding:20px 0; }
     .success-state.show { display:block; }
-    .success-icon {
-      width:72px; height:72px; background:#fff0f0; border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      margin:0 auto 20px; font-size:1.8rem; color:var(--red-dark); font-weight:700;
-    }
+    .success-icon { width:72px; height:72px; background:#fff0f0; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:1.8rem; color:var(--red-dark); font-weight:700; }
     .success-state h3 { font-size:1.4rem; font-weight:800; margin-bottom:10px; }
-    .success-state p  { font-size:0.9rem; color:var(--muted); line-height:1.7; max-width:380px; margin:0 auto; }
-    .entry-badge {
-      display:inline-flex; align-items:center; gap:8px;
-      background:#fff0f0; border:1.5px solid rgba(232,37,26,0.25);
-      border-radius:100px; padding:8px 20px; margin:20px auto 0;
-      font-size:0.8rem; font-weight:700; color:var(--red-dark); letter-spacing:0.04em;
-    }
+    .success-state p { font-size:0.9rem; color:var(--muted); line-height:1.7; max-width:380px; margin:0 auto 20px; }
+    .entry-badge { display:inline-flex; align-items:center; background:#fff0f0; border:1.5px solid rgba(232,37,26,0.25); border-radius:100px; padding:8px 20px; margin-bottom:24px; font-size:0.8rem; font-weight:700; color:var(--red-dark); letter-spacing:0.04em; }
+    .submit-another { background:var(--black); color:var(--white); border:none; padding:14px 28px; border-radius:100px; font-family:'Outfit',sans-serif; font-size:0.88rem; font-weight:700; cursor:pointer; letter-spacing:0.02em; transition:background .2s; }
+    .submit-another:hover { background:var(--red-dark); }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background:var(--black); color:var(--white);
-      padding:32px 48px; text-align:center;
-    }
+    /* SNARKY MODAL */
+    .snarky-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); backdrop-filter:blur(6px); z-index:9999; align-items:center; justify-content:center; padding:24px; }
+    .snarky-overlay.open { display:flex; }
+    .snarky-box { background:var(--white); border-radius:24px; padding:48px 44px; max-width:440px; width:100%; text-align:center; box-shadow:0 24px 80px rgba(0,0,0,0.2); animation:popIn .35s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes popIn { from{opacity:0;transform:scale(0.88) translateY(16px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .snarky-tag { display:inline-block; background:var(--off-white); border:1px solid var(--border); border-radius:100px; padding:6px 16px; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+    .snarky-box h3 { font-size:1.25rem; font-weight:800; color:var(--black); margin-bottom:10px; line-height:1.3; }
+    .snarky-box p { font-size:0.88rem; color:var(--muted); line-height:1.65; margin-bottom:28px; }
+    .snarky-actions { display:flex; flex-direction:column; gap:10px; }
+    .btn-submit-anyway { background:var(--black); color:var(--white); border:none; padding:16px; border-radius:12px; font-family:'Outfit',sans-serif; font-size:0.92rem; font-weight:700; cursor:pointer; letter-spacing:0.02em; transition:background .2s; }
+    .btn-submit-anyway:hover { background:var(--red-dark); }
+    .btn-change-date { background:none; color:var(--muted); border:1.5px solid var(--border); padding:14px; border-radius:12px; font-family:'Outfit',sans-serif; font-size:0.88rem; font-weight:600; cursor:pointer; transition:border-color .2s, color .2s; }
+    .btn-change-date:hover { border-color:var(--text); color:var(--text); }
+
+    /* FOOTER */
+    footer { background:var(--black); padding:32px 48px; text-align:center; }
     footer p { font-size:0.75rem; color:#444; line-height:1.7; }
     footer a { color:#555; text-decoration:none; transition:color .2s; }
     footer a:hover { color:var(--white); }
@@ -231,9 +113,9 @@
     @media(max-width:680px) {
       nav { padding:0 20px; }
       .page-header { padding:40px 20px 36px; }
-      .week-tabs { padding:24px 16px 0; }
       .form-wrap { padding:0 16px; margin-bottom:48px; }
       .form-card { padding:32px 24px; }
+      .snarky-box { padding:36px 24px; }
       footer { padding:28px 20px; }
     }
   </style>
@@ -251,232 +133,287 @@
       <text x="50" y="29" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="21" fill="#0d0d0d">Sperax</text>
     </svg>
   </a>
-  <a href="index.html" class="back-link">← Back to Challenge</a>
+  <a href="index.html" class="back-link">&larr; Back to Challenge</a>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-header-inner">
-    <div class="header-badge">
-      <div class="header-badge-dot"></div>
-      Walk to Win Challenge · Spring 2026
+<!-- NOT-OPEN MODAL (auto-triggers before March 17) -->
+<div class="not-open-overlay" id="notOpenModal">
+  <div class="not-open-box">
+    <div class="not-open-icon">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 4h16M8 28h16M10 4v6l6 6-6 6v6M22 4v6l-6 6 6 6v6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 8h12M13 22h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
     </div>
-    <h1>Submit Your <span>Steps</span></h1>
-    <p>Enter your Participant ID and last name to verify your entry, then log your best single-session step count for this week. Any step count counts.</p>
+    <h3>Not open yet.</h3>
+    <p>The submission portal opens March 17, 2026. Register on the main page in the meantime &mdash; your Participant ID will be ready and waiting.</p>
+    <div class="not-open-countdown">
+      <div class="not-open-cd-unit"><span class="not-open-cd-num" id="no-days">--</span><span class="not-open-cd-label">Days</span></div>
+      <span class="not-open-cd-sep">:</span>
+      <div class="not-open-cd-unit"><span class="not-open-cd-num" id="no-hours">--</span><span class="not-open-cd-label">Hours</span></div>
+      <span class="not-open-cd-sep">:</span>
+      <div class="not-open-cd-unit"><span class="not-open-cd-num" id="no-mins">--</span><span class="not-open-cd-label">Mins</span></div>
+      <span class="not-open-cd-sep">:</span>
+      <div class="not-open-cd-unit"><span class="not-open-cd-num" id="no-secs">--</span><span class="not-open-cd-label">Secs</span></div>
+    </div>
+    <div class="not-open-actions">
+      <a href="index.html" class="btn-go-register">Go Register Now</a>
+      <button class="btn-dismiss" onclick="dismissNotOpen()">I'll come back on the 17th</button>
+    </div>
   </div>
 </div>
 
-<!-- WEEK INDICATOR -->
-<div class="week-tabs">
-  <div class="week-tab active" id="week1-tab">
-    <span class="week-num">Week 1</span>
-    <span class="week-label">Now Open</span>
-    <div class="week-dates">March 17 – 23</div>
+<!-- MAIN CONTENT (always visible) -->
+<div id="mainContent" style="display:flex; flex-direction:column; flex:1;">
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="header-badge"><div class="header-badge-dot"></div>Walk to Win &middot; Spring 2026</div>
+      <h1>Log Your <span>Session</span></h1>
+      <p>Enter your Participant ID and last name to verify, pick your session date, and submit your step count. Any number of steps counts as an entry.</p>
+    </div>
   </div>
-  <div class="week-tab" id="week2-tab">
-    <span class="week-num">Week 2</span>
-    <span class="week-label">Opens March 24</span>
-    <div class="week-dates">March 24 – 31</div>
+
+  <div class="form-wrap">
+    <div class="form-card">
+
+      <div class="form-error" id="formError"></div>
+
+      <form id="submitForm" action="https://formspree.io/f/mreayapz" method="POST">
+        <input type="hidden" name="_subject"  value="Session Log — Walk to Win Challenge" />
+        <input type="hidden" name="Form Type" value="Step Submission" />
+
+        <p class="form-section-label">Verify Your Identity</p>
+
+        <div class="field-group">
+          <label>Participant ID *</label>
+          <input type="text" name="Participant ID" id="participantId" placeholder="SPX-2026-" maxlength="14" required />
+          <p class="field-hint">Sent to you in your registration confirmation email.</p>
+        </div>
+
+        <div class="field-group">
+          <label>Last Name *</label>
+          <input type="text" name="Last Name" id="lastName" placeholder="Smith" required />
+          <p class="field-hint">Must match the name you registered with.</p>
+        </div>
+
+        <hr class="form-divider" />
+
+        <p class="form-section-label">Your Session</p>
+
+        <div class="field-group">
+          <label>Session Date *</label>
+          <input type="date" name="Session Date" id="sessionDate" required />
+          <p class="field-hint">Defaults to today. Logging a past session? That works too.</p>
+        </div>
+
+        <div class="field-group" style="margin-top:20px;">
+          <label>Step Count *</label>
+          <div class="steps-input-wrap">
+            <input type="number" name="Step Count" id="stepCount" placeholder="0" min="1" max="99999" required />
+            <span class="steps-unit">steps</span>
+          </div>
+          <div class="steps-note">
+            <div class="steps-note-icon">i</div>
+            Any step count qualifies. 200 steps or 10,000 &mdash; if you used the pad, it counts as an entry.
+          </div>
+        </div>
+
+        <button type="button" class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+          Log This Session &rarr;
+        </button>
+      </form>
+
+      <div class="success-state" id="successState">
+        <div class="success-icon">&#10003;</div>
+        <h3>Session logged.</h3>
+        <p>Your entry is in the draw. Come back after your next session and log it too &mdash; every submission is another chance to win.</p>
+        <div class="entry-badge">Entry recorded &rarr; April 1st draw</div><br/>
+        <button class="submit-another" onclick="resetForm()">Log Another Session</button>
+      </div>
+
+    </div>
+
+    <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;">
+      Challenge runs March 17&ndash;31, 2026. Submissions close March 31 at 11:59 PM ET.<br>
+      Winners drawn April 1st and notified by email. See <a href="index.html#terms" style="color:var(--red-dark);">Official Rules</a>.
+    </p>
   </div>
+
 </div>
 
-<!-- FORM -->
-<div class="form-wrap">
-  <div class="form-card">
-
-    <!-- Error states -->
-    <div class="form-error" id="formError"></div>
-    <div class="already-submitted" id="alreadySubmitted">
-      You've already submitted your steps for this week. Check back on Monday, March 24th to log Week 2.
+<!-- SNARKY MODAL (past-date) -->
+<div class="snarky-overlay" id="snarkyModal">
+  <div class="snarky-box">
+    <div class="snarky-tag" id="snarkyTag">Late Entry</div>
+    <h3 id="snarkyTitle">Noted.</h3>
+    <p id="snarkyBody">We'll allow it.</p>
+    <div class="snarky-actions">
+      <button class="btn-submit-anyway" id="btnSubmitAnyway">Submit Anyway</button>
+      <button class="btn-change-date" onclick="closeSnarky()">Change the Date</button>
     </div>
-
-    <!-- Form -->
-    <form id="submitForm" action="https://formspree.io/f/mreayapz" method="POST">
-
-      <!-- Hidden fields -->
-      <input type="hidden" name="_subject" value="Step Submission — Walk to Win Challenge" />
-      <input type="hidden" name="_replyto" id="replyToHidden" value="" />
-      <input type="hidden" name="Submission Week" id="weekField" value="Week 1 (March 17–23)" />
-
-      <p class="form-section-label">Verify Your Identity</p>
-
-      <div class="field-group">
-        <label>Participant ID *</label>
-        <input type="text" name="Participant ID" id="participantId"
-               placeholder="SPX-2026-" maxlength="14" required />
-        <p class="field-hint">Your Participant ID was sent to you in your registration confirmation email.</p>
-      </div>
-
-      <div class="field-group">
-        <label>Last Name *</label>
-        <input type="text" name="Last Name" id="lastName"
-               placeholder="Smith" required />
-        <p class="field-hint">Must match the last name you registered with.</p>
-      </div>
-
-      <hr class="form-divider" />
-
-      <p class="form-section-label">Your Best Session This Week</p>
-
-      <div class="field-group">
-        <label>Best Single-Session Step Count *</label>
-        <div class="steps-input-wrap">
-          <input type="number" name="Step Count" id="stepCount"
-                 placeholder="0" min="1" max="99999" required />
-          <span class="steps-unit">steps</span>
-        </div>
-        <div class="steps-note">
-          <div class="steps-note-icon">i</div>
-          Any step count qualifies — it doesn't matter how many. Just showing up and walking is what earns your entry.
-        </div>
-      </div>
-
-      <button type="submit" class="submit-btn" id="submitBtn">
-        Submit My Steps — Earn My Entry
-      </button>
-
-    </form>
-
-    <!-- Success state (replaces form on submit) -->
-    <div class="success-state" id="successState">
-      <div class="success-icon">&#10003;</div>
-      <h3>Entry confirmed.</h3>
-      <p>Your Week 1 step count has been logged and your entry is in the draw. Keep walking — your Week 2 submission window opens Monday, March 24th.</p>
-      <div class="entry-badge">Entry 1 of 2 recorded</div>
-    </div>
-
   </div>
-
-  <!-- Fine print -->
-  <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;">
-    One submission per person per week. Submissions close March 31, 2026 at 11:59 PM ET.<br>
-    Winners drawn April 1st and notified by email. See <a href="index.html#terms" style="color:var(--red-dark);">Official Rules</a> for full details.
-  </p>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <p>
-    © 2026 Sperax Walk to Win Challenge &nbsp;·&nbsp;
-    <a href="index.html">Back to Challenge</a> &nbsp;·&nbsp;
-    <a href="index.html#terms">Official Rules</a> &nbsp;·&nbsp;
+    &copy; 2026 Sperax Walk to Win Challenge &nbsp;&middot;&nbsp;
+    <a href="index.html">Back to Challenge</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#terms">Official Rules</a> &nbsp;&middot;&nbsp;
     <a href="privacy-policy.html">Privacy Policy</a>
   </p>
   <p style="margin-top:6px;">No purchase necessary to enter or win. Open to US residents 18+.</p>
 </footer>
 
 <script>
-  // ─── Week state ───
-  // Set which week is active based on current date
-  (function() {
-    var now  = new Date();
-    var week2Start = new Date('2026-03-24T00:00:00-05:00');
-    var challengeEnd = new Date('2026-03-31T23:59:00-05:00');
+(function() {
 
-    var tab1 = document.getElementById('week1-tab');
-    var tab2 = document.getElementById('week2-tab');
-    var weekField = document.getElementById('weekField');
-    var alreadyMsg = document.getElementById('alreadySubmitted');
+  var OPEN  = new Date('2026-03-17T00:00:00-05:00');
+  var CLOSE = new Date('2026-03-31T23:59:59-05:00');
+  var now   = new Date();
 
-    if (now >= week2Start && now <= challengeEnd) {
-      // Week 2 is active
-      tab1.classList.remove('active');
-      tab1.classList.add('complete');
-      tab1.querySelector('.week-label').textContent = 'Complete';
-      tab2.classList.add('active');
-      tab2.querySelector('.week-label').textContent = 'Now Open';
-      weekField.value = 'Week 2 (March 24–31)';
-      alreadyMsg.textContent = 'You\'ve already submitted your steps for Week 2. Winners will be drawn on April 1st — good luck!';
-      // Update success message for week 2
-      document.querySelector('.success-state p').textContent =
-        'Your Week 2 step count has been logged and your entry is in the draw. Winners are announced on April 1st — good luck!';
-      document.querySelector('.entry-badge').textContent = 'Entry 2 of 2 recorded';
-    } else if (now > challengeEnd) {
-      // Challenge over
-      tab1.classList.remove('active'); tab1.classList.add('complete');
-      tab2.classList.remove('active'); tab2.classList.add('complete');
-      tab1.querySelector('.week-label').textContent = 'Complete';
-      tab2.querySelector('.week-label').textContent = 'Complete';
-      document.getElementById('submitBtn').disabled = true;
-      document.getElementById('submitBtn').textContent = 'Challenge Closed — Winners Announced April 1st';
+  function pad(n) { return String(n).padStart(2,'0'); }
+  function toYMD(d) { return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()); }
+
+  // ── Not-open modal: show automatically if before March 17 ──
+  if (now < OPEN) {
+    document.getElementById('notOpenModal').classList.add('open');
+    runNotOpenCountdown();
+  }
+
+  // ── Disable form after challenge closes ────────────────────
+  if (now > CLOSE) {
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Challenge Closed \u2014 Winners Announced April 1st';
+  }
+
+  // ── Not-open countdown ─────────────────────────────────────
+  function runNotOpenCountdown() {
+    var timer = null;
+    function tick() {
+      var diff = OPEN - new Date();
+      if (diff <= 0) {
+        clearInterval(timer);
+        document.getElementById('notOpenModal').classList.remove('open');
+        return;
+      }
+      document.getElementById('no-days').textContent  = pad(Math.floor(diff/86400000));
+      document.getElementById('no-hours').textContent = pad(Math.floor((diff%86400000)/3600000));
+      document.getElementById('no-mins').textContent  = pad(Math.floor((diff%3600000)/60000));
+      document.getElementById('no-secs').textContent  = pad(Math.floor((diff%60000)/1000));
     }
-  })();
+    tick();
+    timer = setInterval(tick, 1000);
+  }
 
-  // ─── Participant ID auto-format ───
-  var pidInput = document.getElementById('participantId');
-  pidInput.addEventListener('input', function() {
-    var val = this.value.toUpperCase().replace(/[^A-Z0-9\-]/g,'');
-    // Auto-prefix SPX-2026- if they start typing numbers
-    if (val.length > 0 && !val.startsWith('SPX')) {
-      val = 'SPX-2026-' + val.replace(/[^0-9]/g,'');
-    }
-    this.value = val;
+  window.dismissNotOpen = function() {
+    document.getElementById('notOpenModal').classList.remove('open');
+  };
+
+  // ── Default date to today (or March 17 if before challenge) ─
+  var dateInput   = document.getElementById('sessionDate');
+  var defaultDate = (now >= OPEN && now <= CLOSE) ? now : OPEN;
+  dateInput.value = toYMD(defaultDate);
+  dateInput.min   = toYMD(OPEN);
+  dateInput.max   = toYMD(CLOSE);
+
+  // ── Participant ID auto-format ──────────────────────────────
+  document.getElementById('participantId').addEventListener('input', function() {
+    var v = this.value.toUpperCase().replace(/[^A-Z0-9\-]/g,'');
+    if (v.length > 0 && !/^S/.test(v)) { v = 'SPX-2026-' + v.replace(/[^0-9]/g,''); }
+    this.value = v;
   });
 
-  // ─── Form submission ───
-  var form = document.getElementById('submitForm');
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+  // ── Snarky messages for past-date submissions ───────────────
+  var snarky = {
+    1: { tag:'One Day Late',    title:"Yesterday's steps, today's entry.",        body:"We'll allow it. The effort happened \u2014 the entry counts." },
+    2: { tag:'Two Days Late',   title:"A couple days late to log it.",             body:"That's fine. The session still happened and your entry is still valid." },
+    3: { tag:'Three Days Late', title:"Three days of careful consideration.",      body:"Thorough record-keeping. Respect. We'll still count it." },
+    4: { tag:'Four Days Late',  title:"Four days later...",                        body:"Better late than never. Technically. The entry still counts." },
+    fallback: { tag:'Late Entry', title:"That's ambitious record-keeping.",        body:"Digging through the archives? The session still counts \u2014 submitting it now." }
+  };
 
+  // ── Submit handler ──────────────────────────────────────────
+  window.handleSubmit = function() {
     var pid   = document.getElementById('participantId').value.trim().toUpperCase();
     var last  = document.getElementById('lastName').value.trim();
     var steps = document.getElementById('stepCount').value.trim();
+    var date  = document.getElementById('sessionDate').value;
     var err   = document.getElementById('formError');
-
-    // Basic validation
     err.classList.remove('show');
 
-    if (!pid || !last || !steps) {
+    if (!pid || !last || !steps || !date) {
       err.textContent = 'Please fill in all fields before submitting.';
-      err.classList.add('show');
-      return;
+      err.classList.add('show'); return;
     }
-
-    // Validate Participant ID format
     if (!/^SPX-2026-\d{4,5}$/.test(pid)) {
       err.textContent = 'Please enter a valid Participant ID (format: SPX-2026-XXXX). Check your registration email.';
-      err.classList.add('show');
-      return;
+      err.classList.add('show'); return;
     }
-
     if (parseInt(steps) < 1) {
-      err.textContent = 'Please enter a step count greater than 0.';
-      err.classList.add('show');
-      return;
+      err.textContent = 'Please enter a step count of at least 1.';
+      err.classList.add('show'); return;
     }
 
-    var btn = document.getElementById('submitBtn');
+    var selected = new Date(date + 'T00:00:00');
+    var today    = new Date(toYMD(now) + 'T00:00:00');
+    var daysAgo  = Math.round((today - selected) / 86400000);
+
+    if (daysAgo > 0) {
+      var msg = snarky[daysAgo] || snarky.fallback;
+      document.getElementById('snarkyTag').textContent   = msg.tag;
+      document.getElementById('snarkyTitle').textContent = msg.title;
+      document.getElementById('snarkyBody').textContent  = msg.body;
+      document.getElementById('snarkyModal').classList.add('open');
+      document.getElementById('btnSubmitAnyway').onclick = function() { closeSnarky(); doSubmit(); };
+      return;
+    }
+    doSubmit();
+  };
+
+  window.closeSnarky = function() { document.getElementById('snarkyModal').classList.remove('open'); };
+  document.getElementById('snarkyModal').addEventListener('click', function(e) { if (e.target === this) closeSnarky(); });
+
+  // ── Formspree submission ────────────────────────────────────
+  async function doSubmit() {
+    var btn  = document.getElementById('submitBtn');
+    var err  = document.getElementById('formError');
+    var form = document.getElementById('submitForm');
     btn.disabled = true;
-    btn.textContent = 'Submitting…';
-
+    btn.textContent = 'Submitting\u2026';
     try {
-      var response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        // Hide form, show success
+      var res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+      if (res.ok) {
         form.style.display = 'none';
-        err.classList.remove('show');
         document.getElementById('successState').classList.add('show');
       } else {
-        var data = await response.json();
-        var msg = (data.errors && data.errors.map(function(e){ return e.message; }).join(', '))
-                  || 'Something went wrong. Please try again.';
-        err.textContent = msg;
-        err.classList.add('show');
-        btn.disabled = false;
-        btn.textContent = 'Submit My Steps — Earn My Entry';
+        var data = await res.json();
+        var msg = (data.errors && data.errors.map(function(e){return e.message;}).join(', ')) || 'Something went wrong. Please try again.';
+        err.textContent = msg; err.classList.add('show');
+        btn.disabled = false; btn.textContent = 'Log This Session \u2192';
       }
-    } catch(error) {
-      err.textContent = 'Network error — please check your connection and try again.';
+    } catch(e) {
+      err.textContent = 'Network error \u2014 please check your connection and try again.';
       err.classList.add('show');
-      btn.disabled = false;
-      btn.textContent = 'Submit My Steps — Earn My Entry';
+      btn.disabled = false; btn.textContent = 'Log This Session \u2192';
     }
-  });
+  }
+
+  // ── Reset for another session ───────────────────────────────
+  window.resetForm = function() {
+    var form = document.getElementById('submitForm');
+    form.reset();
+    document.getElementById('sessionDate').value = toYMD(new Date());
+    form.style.display = '';
+    document.getElementById('successState').classList.remove('show');
+    document.getElementById('formError').classList.remove('show');
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('submitBtn').textContent = 'Log This Session \u2192';
+  };
+
+})();
 </script>
 </body>
 </html>

@@ -807,9 +807,9 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 03:59:00 UTC) ───
+  // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 04:59:00 UTC) ───
   (function() {
-    var deadline = new Date('2026-04-01T03:59:00Z');
+    var deadline = new Date('2026-04-01T04:59:00Z');
     var timer = null; // declared in OUTER scope so updateCountdown can access it
 
     function pad(n) { return String(n).padStart(2, '0'); }
@@ -894,51 +894,34 @@
 
       if (response.ok) {
         document.getElementById('successModal').classList.add('open');
-        document.body.style.overflow = 'hidden';
         form.reset();
-        // Regenerate ID for any future submissions
-        document.getElementById('hiddenParticipantId').value = participantId;
         btn.disabled = false;
         btn.textContent = 'Claim My Spot & Get My Participant ID →';
       } else {
         const data = await response.json();
-        const msg = (data.errors && data.errors.map(e => e.message).join(', '))
-                    || 'Something went wrong. Please try again.';
-        err.textContent = msg;
+        err.textContent = data.error || 'Something went wrong. Please try again.';
         err.classList.add('show');
         btn.disabled = false;
         btn.textContent = 'Claim My Spot & Get My Participant ID →';
       }
     } catch (error) {
-      err.textContent = 'Network error — please check your connection and try again.';
+      err.textContent = 'Network error. Please check your connection and try again.';
       err.classList.add('show');
       btn.disabled = false;
       btn.textContent = 'Claim My Spot & Get My Participant ID →';
     }
   });
 
-  // ─── Modal ───
+  // ─── FAQ Accordion ───
+  function toggleFaq(btn) {
+    btn.parentElement.classList.toggle('open');
+  }
+
+  // ─── Close Modal ───
   function closeModal() {
     document.getElementById('successModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.getElementById('successModal').addEventListener('click', function (e) {
-    if (e.target === this) closeModal();
-  });
-
-  // ─── FAQ accordion ───
-  function toggleFaq(btn) {
-    const item   = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    // Close all open items
-    document.querySelectorAll('.faq-item.open').forEach(function(el) {
-      el.classList.remove('open');
-    });
-    // Open this one if it wasn't already open
-    if (!isOpen) {
-      item.classList.add('open');
-    }
   }
 </script>
+
 </body>
 </html>

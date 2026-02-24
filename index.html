@@ -289,6 +289,180 @@
     .faq-a { display:none; padding:0 0 22px; font-size:0.92rem; color:var(--muted); line-height:1.75; }
     .faq-item.open .faq-a { display:block; }
 
+    /* ─── NAV COUNTER ─── */
+    .nav-counter {
+      display:flex; align-items:center; gap:7px;
+      font-size:0.75rem; font-weight:600; color:var(--muted);
+      letter-spacing:0.03em; white-space:nowrap;
+    }
+    .nav-counter-dot {
+      width:7px; height:7px; border-radius:50%; background:var(--green);
+      animation:pulse 2s infinite; flex-shrink:0;
+    }
+    .nav-counter-num { color:var(--text); font-weight:700; }
+
+    /* ─── HAMBURGER MENU ─── */
+    .hamburger {
+      display:none; flex-direction:column; gap:5px; cursor:pointer;
+      background:none; border:none; padding:8px; z-index:300;
+    }
+    .hamburger span {
+      display:block; width:24px; height:2px; background:var(--text);
+      border-radius:2px; transition:transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display:none; position:fixed; inset:0; top:68px;
+      background:var(--white); z-index:250; padding:32px 24px;
+      flex-direction:column; gap:0; border-top:1px solid var(--border);
+    }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a {
+      display:block; font-size:1.1rem; font-weight:600; color:var(--text);
+      text-decoration:none; padding:18px 0; border-bottom:1px solid var(--border);
+      transition:color .2s;
+    }
+    .mobile-menu a:hover { color:var(--green-dark); }
+    .mobile-menu .mob-cta {
+      margin-top:24px; background:var(--black); color:var(--white) !important;
+      text-align:center; border-radius:12px; padding:18px !important;
+      border-bottom:none !important; font-size:1rem !important;
+    }
+    .mobile-menu .mob-cta:hover { background:var(--green-dark) !important; }
+    .mobile-menu .mob-counter {
+      margin-top:20px; font-size:0.82rem; color:var(--muted);
+      text-align:center; padding-top:20px; border-top:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center; gap:7px;
+    }
+    .mobile-menu .mob-counter-dot { width:7px; height:7px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; }
+
+    /* ─── KEY DATES SECTION ─── */
+    .dates-section { background:var(--black); padding:96px 48px; }
+    .dates-inner { max-width:860px; margin:0 auto; }
+    .dates-inner .section-eyebrow { color:var(--green); }
+    .dates-inner .section-title { color:var(--white); margin-bottom:12px; }
+    .dates-intro { font-size:0.95rem; color:#555; margin-bottom:52px; line-height:1.7; }
+
+    .dates-stack { display:flex; flex-direction:column; gap:12px; }
+
+    .date-card {
+      border-radius:16px; padding:28px 32px;
+      display:flex; align-items:center; gap:28px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.03);
+      transition:all .3s; position:relative; overflow:hidden;
+    }
+    /* state: past */
+    .date-card.past { opacity:0.38; }
+    .date-card.past .dc-date,
+    .date-card.past .dc-title { color:#444; }
+
+    /* state: active — red left border + glow */
+    .date-card.active {
+      border-color:rgba(232,37,26,0.4);
+      background:rgba(232,37,26,0.05);
+      box-shadow:0 0 0 1px rgba(232,37,26,0.2), 0 8px 48px rgba(232,37,26,0.12), inset 4px 0 0 var(--green);
+    }
+    .date-card.active::before {
+      content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
+      background:var(--green); border-radius:16px 0 0 16px;
+    }
+
+    /* state: future */
+    .date-card.future { opacity:0.72; }
+
+    .dc-num {
+      font-size:3rem; font-weight:800; color:rgba(255,255,255,0.08);
+      letter-spacing:-0.04em; line-height:1; min-width:52px; text-align:right;
+      font-variant-numeric:tabular-nums; flex-shrink:0;
+    }
+    .date-card.active .dc-num { color:rgba(232,37,26,0.18); }
+    .date-card.future .dc-num { color:rgba(255,255,255,0.06); }
+
+    .dc-divider { width:1px; background:rgba(255,255,255,0.08); align-self:stretch; flex-shrink:0; }
+    .date-card.active .dc-divider { background:rgba(232,37,26,0.3); }
+
+    .dc-body { flex:1; min-width:0; }
+    .dc-date {
+      font-size:0.68rem; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; color:#555; margin-bottom:6px;
+    }
+    .date-card.active .dc-date { color:var(--green); }
+    .date-card.future .dc-date { color:#444; }
+    .dc-title {
+      font-size:1.1rem; font-weight:800; color:var(--white);
+      letter-spacing:-0.01em; margin-bottom:4px;
+    }
+    .dc-sub { font-size:0.8rem; color:#555; line-height:1.5; }
+    .date-card.active .dc-sub { color:#888; }
+
+    .dc-badge-wrap { flex-shrink:0; }
+    .dc-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:0.65rem; font-weight:700; letter-spacing:0.14em;
+      text-transform:uppercase; padding:6px 12px; border-radius:100px;
+    }
+    .dc-badge.now {
+      background:rgba(232,37,26,0.15); color:var(--green);
+      border:1px solid rgba(232,37,26,0.3);
+    }
+    .dc-badge.done {
+      background:rgba(255,255,255,0.05); color:#444;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .dc-badge.upcoming {
+      background:rgba(255,255,255,0.04); color:#444;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .dc-blink {
+      width:6px; height:6px; border-radius:50%; background:var(--green);
+      animation:pulse 1.4s infinite;
+    }
+
+    /* countdown inside section — small, understated */
+    .dates-countdown {
+      margin-top:40px; display:flex; align-items:center; gap:0;
+      border:1px solid rgba(255,255,255,0.07); border-radius:12px;
+      overflow:hidden;
+    }
+    .dc-cd-label {
+      padding:16px 24px; font-size:0.72rem; font-weight:700;
+      letter-spacing:0.12em; text-transform:uppercase; color:#444;
+      border-right:1px solid rgba(255,255,255,0.07); white-space:nowrap;
+    }
+    .dc-cd-units { display:flex; flex:1; }
+    .dc-cd-unit {
+      flex:1; text-align:center; padding:14px 8px;
+      border-right:1px solid rgba(255,255,255,0.07);
+    }
+    .dc-cd-unit:last-child { border-right:none; }
+    .dc-cd-num {
+      font-size:1.4rem; font-weight:800; color:var(--white);
+      letter-spacing:-0.02em; display:block; line-height:1;
+    }
+    .dc-cd-lbl {
+      font-size:0.58rem; font-weight:700; letter-spacing:0.14em;
+      text-transform:uppercase; color:#444; margin-top:4px; display:block;
+    }
+
+    /* ─── STICKY MOBILE CTA ─── */
+    .sticky-cta {
+      display:none; position:fixed; bottom:0; left:0; right:0; z-index:200;
+      background:var(--black); border-top:1px solid rgba(255,255,255,0.08);
+      padding:14px 20px; align-items:center; justify-content:space-between; gap:12px;
+      box-shadow:0 -4px 24px rgba(0,0,0,0.25);
+    }
+    .sticky-cta-text { font-size:0.8rem; color:#888; line-height:1.4; }
+    .sticky-cta-text strong { color:var(--white); display:block; font-size:0.9rem; }
+    .sticky-cta-btn {
+      background:var(--green); color:var(--white); text-decoration:none;
+      padding:13px 22px; border-radius:10px; font-size:0.85rem; font-weight:700;
+      white-space:nowrap; flex-shrink:0; transition:background .2s;
+    }
+    .sticky-cta-btn:hover { background:var(--green-dark); }
+
     /* ─── FOOTER ─── */
     footer { background:var(--black); color:var(--white); padding:52px 48px; }
     .footer-inner { max-width:1160px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; }
@@ -317,6 +491,10 @@
     @media(max-width:900px) {
       nav { padding:0 20px; }
       .nav-links { display:none; }
+      .nav-counter { display:none; }
+      .hamburger { display:flex; }
+      .sticky-cta { display:flex; }
+      body { padding-bottom:72px; }
       .hiw-inner { padding:64px 20px; }
       .hiw-steps { grid-template-columns:1fr 1fr; gap:40px; }
       .hiw-steps::before { display:none; }
@@ -333,6 +511,13 @@
       footer { padding:40px 20px; }
       .footer-links { display:none; }
       .countdown-bar { padding:20px; gap:16px; }
+      .dates-section { padding:64px 20px; }
+      .date-card { padding:20px; gap:16px; }
+      .dc-num { font-size:2rem; min-width:36px; }
+      .dates-countdown { flex-direction:column; }
+      .dc-cd-label { border-right:none; border-bottom:1px solid rgba(255,255,255,0.07); text-align:center; }
+      .dc-cd-unit { padding:12px 8px; }
+      .dc-cd-num { font-size:1.2rem; }
     }
     @media(max-width:600px) {
       .hiw-steps { grid-template-columns:1fr; gap:32px; }
@@ -386,6 +571,12 @@
       <text x="50" y="29" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="21" fill="#0d0d0d">Sperax</text>
     </svg>
   </a>
+
+  <div class="nav-counter">
+    <div class="nav-counter-dot"></div>
+    <span class="nav-counter-num" id="navCount">—</span>&nbsp;registered
+  </div>
+
   <ul class="nav-links">
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#prizes">Prizes</a></li>
@@ -393,7 +584,24 @@
     <li><a href="submit-steps.html" class="nav-submit-link">Submit Steps</a></li>
     <li><a href="#register" class="nav-cta">Register Now</a></li>
   </ul>
+
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how-it-works" onclick="toggleMenu()">How It Works</a>
+  <a href="#prizes" onclick="toggleMenu()">Prizes</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="submit-steps.html">Submit Steps</a>
+  <a href="#register" class="mob-cta" onclick="toggleMenu()">Register Now — It's Free</a>
+  <div class="mob-counter">
+    <div class="mob-counter-dot"></div>
+    <span id="mobCount">—</span>&nbsp;people registered
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -471,7 +679,95 @@
   </div>
 </div>
 
-<!-- SUBMIT STEPS BANNER -->
+<!-- KEY DATES -->
+<div class="dates-section" id="key-dates">
+  <div class="dates-inner">
+    <p class="section-eyebrow">Key Dates</p>
+    <h2 class="section-title">Know exactly what's coming.</h2>
+    <p class="dates-intro">Five milestones. Fifteen days to rack up entries. One draw that changes everything.</p>
+
+    <div class="dates-stack">
+
+      <div class="date-card" id="dc-1">
+        <div class="dc-num">01</div>
+        <div class="dc-divider"></div>
+        <div class="dc-body">
+          <div class="dc-date">Now Open</div>
+          <div class="dc-title">Registration</div>
+          <div class="dc-sub">Sign up free — takes under 60 seconds. Get your Participant ID and you're in.</div>
+        </div>
+        <div class="dc-badge-wrap">
+          <span class="dc-badge upcoming" id="dc-1-badge">Open Now</span>
+        </div>
+      </div>
+
+      <div class="date-card" id="dc-2">
+        <div class="dc-num">17</div>
+        <div class="dc-divider"></div>
+        <div class="dc-body">
+          <div class="dc-date">March 17, 2026</div>
+          <div class="dc-title">Challenge Opens</div>
+          <div class="dc-sub">The 15-day window begins. Walk, log, earn your first entry.</div>
+        </div>
+        <div class="dc-badge-wrap">
+          <span class="dc-badge upcoming" id="dc-2-badge">March 17</span>
+        </div>
+      </div>
+
+      <div class="date-card" id="dc-3">
+        <div class="dc-num">17<span style="font-size:1.4rem;color:inherit;">–</span>31</div>
+        <div class="dc-divider"></div>
+        <div class="dc-body">
+          <div class="dc-date">March 17–31, 2026</div>
+          <div class="dc-title">15 Days to Earn Entries</div>
+          <div class="dc-sub">One walk per day, one log per day, one entry per day. Max 15 entries.</div>
+        </div>
+        <div class="dc-badge-wrap">
+          <span class="dc-badge upcoming" id="dc-3-badge">15 Days</span>
+        </div>
+      </div>
+
+      <div class="date-card" id="dc-4">
+        <div class="dc-num">31</div>
+        <div class="dc-divider"></div>
+        <div class="dc-body">
+          <div class="dc-date">March 31, 2026 · 11:59 PM ET</div>
+          <div class="dc-title">Entries Close</div>
+          <div class="dc-sub">Final deadline. Any session logged after midnight won't count.</div>
+        </div>
+        <div class="dc-badge-wrap">
+          <span class="dc-badge upcoming" id="dc-4-badge">March 31</span>
+        </div>
+      </div>
+
+      <div class="date-card" id="dc-5">
+        <div class="dc-num">01</div>
+        <div class="dc-divider"></div>
+        <div class="dc-body">
+          <div class="dc-date">April 1, 2026</div>
+          <div class="dc-title">Winners Drawn</div>
+          <div class="dc-sub">Three winners selected by random draw and notified by email.</div>
+        </div>
+        <div class="dc-badge-wrap">
+          <span class="dc-badge upcoming" id="dc-5-badge">April 1</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Understated countdown -->
+    <div class="dates-countdown" id="datesCountdown">
+      <div class="dc-cd-label" id="cdTargetLabel">Entries close in</div>
+      <div class="dc-cd-units">
+        <div class="dc-cd-unit"><span class="dc-cd-num" id="dc-days">--</span><span class="dc-cd-lbl">Days</span></div>
+        <div class="dc-cd-unit"><span class="dc-cd-num" id="dc-hours">--</span><span class="dc-cd-lbl">Hours</span></div>
+        <div class="dc-cd-unit"><span class="dc-cd-num" id="dc-mins">--</span><span class="dc-cd-lbl">Mins</span></div>
+        <div class="dc-cd-unit"><span class="dc-cd-num" id="dc-secs">--</span><span class="dc-cd-lbl">Secs</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
 <div class="submit-banner">
   <div class="submit-banner-inner">
     <div class="submit-banner-left">
@@ -766,6 +1062,15 @@
   </div>
 </div>
 
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text">
+    <strong id="stickyCtaLabel">Register — It's Free</strong>
+    <span id="stickyCtaSub">Challenge opens March 17</span>
+  </div>
+  <a href="#register" class="sticky-cta-btn" id="stickyCtaBtn">Register Now</a>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -807,7 +1112,7 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ─── Countdown to March 31 2026 11:59 PM ET (April 1 2026 03:59:00 UTC) ───
+  // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 03:59:00 UTC) ───
   (function() {
     var deadline = new Date('2026-04-01T03:59:00Z');
     var timer = null; // declared in OUTER scope so updateCountdown can access it
@@ -895,15 +1200,21 @@
       if (response.ok) {
         document.getElementById('successModal').classList.add('open');
         document.body.style.overflow = 'hidden';
+        form.reset();
+        // Regenerate ID for any future submissions
+        document.getElementById('hiddenParticipantId').value = participantId;
+        btn.disabled = false;
+        btn.textContent = 'Claim My Spot & Get My Participant ID →';
       } else {
         const data = await response.json();
-        const msg = data.errors ? data.errors.map(e => e.message).join(', ') : 'Something went wrong. Please try again.';
+        const msg = (data.errors && data.errors.map(e => e.message).join(', '))
+                    || 'Something went wrong. Please try again.';
         err.textContent = msg;
         err.classList.add('show');
         btn.disabled = false;
         btn.textContent = 'Claim My Spot & Get My Participant ID →';
       }
-    } catch (e) {
+    } catch (error) {
       err.textContent = 'Network error — please check your connection and try again.';
       err.classList.add('show');
       btn.disabled = false;
@@ -911,21 +1222,189 @@
     }
   });
 
+  // ─── Modal ───
   function closeModal() {
     document.getElementById('successModal').classList.remove('open');
     document.body.style.overflow = '';
-    document.getElementById('challengeForm').reset();
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = false;
-    btn.textContent = 'Claim My Spot & Get My Participant ID →';
   }
+  document.getElementById('successModal').addEventListener('click', function (e) {
+    if (e.target === this) closeModal();
+  });
 
-  // FAQ accordion
+  // ─── Hamburger menu ───
+  window.toggleMenu = function() {
+    var btn  = document.getElementById('hamburger');
+    var menu = document.getElementById('mobileMenu');
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  };
+
+  // ─── Participant counter ───────────────────────────────────
+  // Deterministic: counts 30-min active slots (8am-10pm ET) since
+  // epoch date, each slot adds a seeded-random increment of 2-5.
+  // Caps at 4000 → shows "4,000+"
+  (function() {
+    var EPOCH       = new Date('2026-03-01T08:00:00-05:00'); // counting starts March 1
+    var START_COUNT = 500;
+    var CAP         = 4000;
+    var SLOT_MS     = 30 * 60 * 1000;
+
+    // Simple seeded PRNG (mulberry32)
+    function seededRand(seed) {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+
+    function calcCount() {
+      var now    = new Date();
+      var t      = EPOCH.getTime();
+      var count  = START_COUNT;
+      var slot   = 0;
+
+      while (t < now.getTime()) {
+        // Check if this time is within 8am–10pm ET
+        var d    = new Date(t);
+        // ET offset: rough — use fixed offset, good enough for prank
+        var etH  = (d.getUTCHours() - 5 + 24) % 24; // EST (UTC-5, close enough)
+        if (etH >= 8 && etH < 22) {
+          var inc = 2 + Math.floor(seededRand(slot) * 4); // 2-5
+          count  += inc;
+          if (count >= CAP) { return CAP; }
+        }
+        t   += SLOT_MS;
+        slot++;
+      }
+      return Math.min(count, CAP);
+    }
+
+    function formatCount(n) {
+      if (n >= CAP) return '4,000+';
+      return n.toLocaleString();
+    }
+
+    function updateCounter() {
+      var c   = calcCount();
+      var str = formatCount(c);
+      var el1 = document.getElementById('navCount');
+      var el2 = document.getElementById('mobCount');
+      if (el1) el1.textContent = str;
+      if (el2) el2.textContent = str;
+    }
+
+    updateCounter();
+    // Refresh every 30 minutes to pick up new increments live
+    setInterval(updateCounter, SLOT_MS);
+  })();
+
+  // ─── Key dates card states + countdown ───────────────────
+  (function() {
+    var now     = new Date();
+    var MAR17   = new Date('2026-03-17T00:00:00-05:00');
+    var MAR31   = new Date('2026-03-31T23:59:59-05:00');
+    var APR1    = new Date('2026-04-01T12:00:00-05:00');
+
+    // Card thresholds: [id, activeFrom, activeTo]
+    var cards = [
+      { id:'dc-1', from:new Date('2026-01-01'), to:MAR17 },
+      { id:'dc-2', from:MAR17,                 to:MAR17 },
+      { id:'dc-3', from:MAR17,                 to:MAR31 },
+      { id:'dc-4', from:MAR31,                 to:MAR31 },
+      { id:'dc-5', from:APR1,                  to:APR1  },
+    ];
+
+    cards.forEach(function(c, i) {
+      var el    = document.getElementById(c.id);
+      var badge = document.getElementById(c.id + '-badge');
+      if (!el) return;
+
+      if (now >= c.from && now <= c.to) {
+        // Active
+        el.classList.add('active');
+        if (badge) {
+          badge.className = 'dc-badge now';
+          badge.innerHTML = '<div class="dc-blink"></div> Now';
+        }
+      } else if (now > c.to) {
+        // Past
+        el.classList.add('past');
+        if (badge) { badge.className = 'dc-badge done'; badge.textContent = 'Done'; }
+      } else {
+        // Future
+        el.classList.add('future');
+      }
+    });
+
+    // Special case: card 1 (registration) is always active until challenge opens
+    if (now < MAR17) {
+      var c1 = document.getElementById('dc-1');
+      var b1 = document.getElementById('dc-1-badge');
+      if (c1) { c1.className = 'date-card active'; }
+      if (b1) { b1.className = 'dc-badge now'; b1.innerHTML = '<div class="dc-blink"></div> Open Now'; }
+    }
+
+    // Countdown — targets March 17 before challenge, March 31 during, hides after
+    var target, labelText;
+    if (now < MAR17) {
+      target    = MAR17;
+      labelText = 'Challenge opens in';
+    } else if (now <= MAR31) {
+      target    = MAR31;
+      labelText = 'Entries close in';
+    } else {
+      var cd = document.getElementById('datesCountdown');
+      if (cd) cd.style.display = 'none';
+      return;
+    }
+
+    var lbl = document.getElementById('cdTargetLabel');
+    if (lbl) lbl.textContent = labelText;
+
+    function pad(n) { return String(n).padStart(2,'0'); }
+    function tickDates() {
+      var diff = target - new Date();
+      if (diff <= 0) { clearInterval(t); return; }
+      document.getElementById('dc-days').textContent  = pad(Math.floor(diff/86400000));
+      document.getElementById('dc-hours').textContent = pad(Math.floor((diff%86400000)/3600000));
+      document.getElementById('dc-mins').textContent  = pad(Math.floor((diff%3600000)/60000));
+      document.getElementById('dc-secs').textContent  = pad(Math.floor((diff%60000)/1000));
+    }
+    tickDates();
+    var t = setInterval(tickDates, 1000);
+  })();
+
+  // ─── Sticky mobile CTA — swaps to Submit after March 17 ───
+  (function() {
+    var now    = new Date();
+    var open   = new Date('2026-03-17T00:00:00-05:00');
+    var closed = new Date('2026-03-31T23:59:00-05:00');
+    var label  = document.getElementById('stickyCtaLabel');
+    var sub    = document.getElementById('stickyCtaSub');
+    var btn    = document.getElementById('stickyCtaBtn');
+    if (!label) return;
+    if (now >= open && now <= closed) {
+      label.textContent = "Log Today's Session";
+      sub.textContent   = 'Challenge is live — submit your steps';
+      btn.textContent   = 'Submit Steps';
+      btn.href          = 'submit-steps.html';
+    } else if (now > closed) {
+      var cta = document.getElementById('stickyCta');
+      if (cta) cta.style.display = 'none';
+    }
+  })();
+
+  // ─── FAQ accordion ───
   function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
+    const item   = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+    }
   }
 </script>
 </body>

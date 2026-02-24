@@ -1,0 +1,25 @@
+TIMER FIX INSTRUCTIONS FOR index.html
+==========================================
+
+AUTOMATED FIX FAILED: File too large for API (68KB+)
+
+MANUAL FIX REQUIRED:
+1. Go to: https://github.com/tylerherman19/WalkChallenge/edit/main/index.html
+2. Scroll to the VERY BOTTOM of the file
+3. Look for the closing </body> tag
+4. BEFORE the </body> tag, add this line:
+
+   <script src="timer.js"></script>
+
+5. Commit with message: "Add centralized timer to index.html"
+
+This will load the timer.js file (already created and configured for April 1st 12:59 AM).
+
+ALTERNATIVE: If index.html already has inline <script> with timer code:
+- Find: var END = new Date('...');
+- Replace with: var END = new Date('04/01/2026 00:59:59');
+
+STATUS:
+✅ submit-steps.html - Timer updated to April 1st 12:59 AM
+✅ timer.js - Centralized timer created
+⚠️ index.html - Needs script tag added (file too large for automated update)

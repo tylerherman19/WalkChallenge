@@ -114,9 +114,14 @@
       nav { padding:0 20px; }
       .page-header { padding:40px 20px 36px; }
       .form-wrap { padding:0 16px; margin-bottom:48px; }
-      .form-card { padding:32px 24px; }
+      .form-card { padding:32px 20px; }
       .snarky-box { padding:36px 24px; }
       footer { padding:28px 20px; }
+      /* Larger tap targets on mobile */
+      .field-group input { padding:16px 18px; font-size:1rem; }
+      .field-group label { font-size:0.8rem; margin-bottom:10px; }
+      .field-group { margin-bottom:22px; }
+      .not-open-box { padding:36px 24px; }
     }
   </style>
 </head>
@@ -203,14 +208,18 @@
 
         <div class="field-group">
           <label>Session Date *</label>
-          <input type="date" name="Session Date" id="sessionDate" required />
+          <input type="date" name="Session Date" id="sessionDate" required
+                 style="font-size:1rem; padding:16px 18px;" />
           <p class="field-hint">Defaults to today. One entry per calendar day.</p>
         </div>
 
         <div class="field-group" style="margin-top:20px;">
           <label>Step Count *</label>
           <div class="steps-input-wrap">
-            <input type="number" name="Step Count" id="stepCount" placeholder="0" min="1" max="99999" required />
+            <input type="number" name="Step Count" id="stepCount"
+                   placeholder="0" min="1" max="99999" required
+                   inputmode="numeric" pattern="[0-9]*"
+                   style="font-size:2rem; padding:24px 72px 24px 18px;" />
             <span class="steps-unit">steps</span>
           </div>
           <div class="steps-note">
@@ -219,7 +228,8 @@
           </div>
         </div>
 
-        <button type="button" class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+        <button type="button" class="submit-btn" id="submitBtn" onclick="handleSubmit()"
+                style="margin-top:16px; padding:20px; font-size:1.05rem;">
           Log This Session &rarr;
         </button>
       </form>
@@ -270,7 +280,7 @@
 (function() {
 
   var OPEN  = new Date('2026-03-17T00:00:00-05:00');
-  var CLOSE = new Date('2026-04-01T03:59:00Z');
+  var CLOSE = new Date('2026-03-31T23:59:59-05:00');
   var now   = new Date();
 
   function pad(n) { return String(n).padStart(2,'0'); }
@@ -289,7 +299,7 @@
     btn.textContent = 'Challenge Closed \u2014 Winners Announced April 1st';
   }
 
-  // ── Not-open countdown ─────────────────────────
+  // ── Not-open countdown ─────────────────────────────────────
   function runNotOpenCountdown() {
     var timer = null;
     function tick() {
@@ -317,16 +327,16 @@
   var defaultDate = (now >= OPEN && now <= CLOSE) ? now : OPEN;
   dateInput.value = toYMD(defaultDate);
   dateInput.min   = toYMD(OPEN);
-  dateInput.max   = '2026-03-31';
+  dateInput.max   = toYMD(CLOSE);
 
-  // ── Participant ID auto-format ──────────────────────
+  // ── Participant ID auto-format ──────────────────────────────
   document.getElementById('participantId').addEventListener('input', function() {
     var v = this.value.toUpperCase().replace(/[^A-Z0-9\-]/g,'');
     if (v.length > 0 && !/^S/.test(v)) { v = 'SPX-2026-' + v.replace(/[^0-9]/g,''); }
     this.value = v;
   });
 
-  // ── Snarky messages for past-date submissions ─────────────
+  // ── Snarky messages for past-date submissions ───────────────
   var snarky = {
     1: { tag:'One Day Late',    title:"Yesterday's steps, today's entry.",        body:"We'll allow it. The effort happened \u2014 the entry counts." },
     2: { tag:'Two Days Late',   title:"A couple days late to log it.",             body:"That's fine. The session still happened and your entry is still valid." },
@@ -335,7 +345,7 @@
     fallback: { tag:'Late Entry', title:"That's ambitious record-keeping.",        body:"Digging through the archives? The session still counts \u2014 submitting it now." }
   };
 
-  // ── Submit handler ──────────────────────────────
+  // ── Submit handler ──────────────────────────────────────────
   window.handleSubmit = function() {
     var pid   = document.getElementById('participantId').value.trim().toUpperCase();
     var last  = document.getElementById('lastName').value.trim();
@@ -376,7 +386,7 @@
   window.closeSnarky = function() { document.getElementById('snarkyModal').classList.remove('open'); };
   document.getElementById('snarkyModal').addEventListener('click', function(e) { if (e.target === this) closeSnarky(); });
 
-  // ── Formspree submission ────────────────────────────
+  // ── Formspree submission ────────────────────────────────────
   async function doSubmit() {
     var btn  = document.getElementById('submitBtn');
     var err  = document.getElementById('formError');
@@ -401,7 +411,7 @@
     }
   }
 
-  // ── Reset for another session ───────────────────────────
+  // ── Reset for another session ───────────────────────────────
   window.resetForm = function() {
     var form = document.getElementById('submitForm');
     form.reset();

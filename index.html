@@ -289,18 +289,6 @@
     .faq-a { display:none; padding:0 0 22px; font-size:0.92rem; color:var(--muted); line-height:1.75; }
     .faq-item.open .faq-a { display:block; }
 
-    /* ─── NAV COUNTER ─── */
-    .nav-counter {
-      display:flex; align-items:center; gap:7px;
-      font-size:0.75rem; font-weight:600; color:var(--muted);
-      letter-spacing:0.03em; white-space:nowrap;
-    }
-    .nav-counter-dot {
-      width:7px; height:7px; border-radius:50%; background:var(--green);
-      animation:pulse 2s infinite; flex-shrink:0;
-    }
-    .nav-counter-num { color:var(--text); font-weight:700; }
-
     /* ─── HAMBURGER MENU ─── */
     .hamburger {
       display:none; flex-direction:column; gap:5px; cursor:pointer;
@@ -491,7 +479,6 @@
     @media(max-width:900px) {
       nav { padding:0 20px; }
       .nav-links { display:none; }
-      .nav-counter { display:none; }
       .hamburger { display:flex; }
       .sticky-cta { display:flex; }
       body { padding-bottom:72px; }
@@ -572,10 +559,6 @@
     </svg>
   </a>
 
-  <div class="nav-counter">
-    <div class="nav-counter-dot"></div>
-    <span class="nav-counter-num">1,200+</span>&nbsp;registered
-  </div>
 
   <ul class="nav-links">
     <li><a href="#how-it-works">How It Works</a></li>
@@ -715,7 +698,7 @@
       </div>
 
       <div class="date-card" id="dc-3">
-        <div class="dc-num">17<span style="font-size:1.4rem;color:inherit;">–</span>31</div>
+        <div class="dc-num">15</div>
         <div class="dc-divider"></div>
         <div class="dc-body">
           <div class="dc-date">March 17–31, 2026</div>

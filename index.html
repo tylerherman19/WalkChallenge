@@ -1095,33 +1095,37 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ─── Countdown to March 31 2026 11:59 PM EST (April 1 2026 03:59:00 UTC) ───
+  // ─── Main countdown bar ───────────────────────────────────
+  // Before March 24: counts to registration deadline
+  // March 24 – March 31: counts to challenge close
+  // After March 31: hides bar entirely
   (function() {
-    var deadline = new Date('2026-04-01T03:59:00Z'); // March 31 11:59 PM EDT (UTC-4)
-    var timer = null; // declared in OUTER scope so updateCountdown can access it
+    var REG_DEADLINE  = new Date('2026-03-24T23:59:00-04:00'); // March 24 11:59 PM EDT
+    var CHAL_DEADLINE = new Date('2026-04-01T03:59:00Z');       // March 31 11:59 PM EDT
+    var timer = null;
+    var bar   = document.querySelector('.countdown-bar');
+    var lbl   = document.querySelector('.countdown-bar .countdown-label');
 
     function pad(n) { return String(n).padStart(2, '0'); }
+    function setEl(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
 
-    function setEl(id, val) {
-      var el = document.getElementById(id);
-      if (el) el.textContent = val; // null-safe
+    function getTarget() {
+      var now = new Date();
+      if (now < REG_DEADLINE)  return { target: REG_DEADLINE,  label: 'Registration closes in' };
+      if (now <= CHAL_DEADLINE) return { target: CHAL_DEADLINE, label: 'Challenge closes in' };
+      return null;
     }
 
     function updateCountdown() {
-      var now  = new Date();
-      var diff = deadline - now;
-      console.log('[Countdown] diff=' + diff + 'ms, target=' + deadline.toISOString());
-
-      if (diff <= 0) {
-        setEl('cd-days',  '00');
-        setEl('cd-hours', '00');
-        setEl('cd-mins',  '00');
-        setEl('cd-secs',  '00');
-        if (timer !== null) { clearInterval(timer); timer = null; }
-        console.log('[Countdown] finished.');
+      var phase = getTarget();
+      if (!phase) {
+        if (bar) bar.style.display = 'none';
+        if (timer) { clearInterval(timer); timer = null; }
         return;
       }
-
+      if (lbl) lbl.textContent = phase.label;
+      var diff = phase.target - new Date();
+      if (diff <= 0) { setEl('cd-days','00'); setEl('cd-hours','00'); setEl('cd-mins','00'); setEl('cd-secs','00'); return; }
       setEl('cd-days',  pad(Math.floor(diff / 86400000)));
       setEl('cd-hours', pad(Math.floor((diff % 86400000) / 3600000)));
       setEl('cd-mins',  pad(Math.floor((diff % 3600000)  / 60000)));
@@ -1129,11 +1133,10 @@
     }
 
     function startCountdown() {
-      updateCountdown();               // run immediately
-      timer = setInterval(updateCountdown, 1000); // timer now accessible to updateCountdown
+      updateCountdown();
+      timer = setInterval(updateCountdown, 1000);
     }
 
-    // Safe DOM startup
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', startCountdown);
     } else {
@@ -1244,9 +1247,9 @@
   // ─── Key dates card states + countdown ───────────────────
   (function() {
     var now     = new Date();
-    var MAR17   = new Date('2026-03-17T00:00:00-05:00');
-    var MAR31   = new Date('2026-03-31T23:59:59-05:00');
-    var APR1    = new Date('2026-04-01T12:00:00-05:00');
+    var MAR17   = new Date('2026-03-17T00:00:00-04:00'); // midnight EDT
+    var MAR31   = new Date('2026-03-31T23:59:00-04:00'); // 11:59 PM EDT — matches main countdown
+    var APR1    = new Date('2026-04-01T12:00:00-04:00'); // noon EDT
 
     // Card thresholds: [id, activeFrom, activeTo]
     var cards = [
@@ -1287,14 +1290,15 @@
       if (b1) { b1.className = 'dc-badge now'; b1.innerHTML = '<div class="dc-blink"></div> Open Now'; }
     }
 
-    // Countdown — targets March 17 before challenge, March 31 during, hides after
-    var target, labelText;
-    if (now < MAR17) {
-      target    = MAR17;
-      labelText = 'Challenge opens in';
+    // Key dates countdown — registration deadline first, then challenge close
+    var REG_END  = new Date('2026-03-24T23:59:00-04:00'); // March 24 11:59 PM EDT
+    var cdTarget, cdLabel;
+    if (now < REG_END) {
+      cdTarget  = REG_END;
+      cdLabel   = 'Registration closes in';
     } else if (now <= MAR31) {
-      target    = MAR31;
-      labelText = 'Entries close in';
+      cdTarget  = MAR31;
+      cdLabel   = 'Entries close in';
     } else {
       var cd = document.getElementById('datesCountdown');
       if (cd) cd.style.display = 'none';
@@ -1302,12 +1306,17 @@
     }
 
     var lbl = document.getElementById('cdTargetLabel');
-    if (lbl) lbl.textContent = labelText;
+    if (lbl) lbl.textContent = cdLabel;
 
     function pad(n) { return String(n).padStart(2,'0'); }
     function tickDates() {
-      var diff = target - new Date();
-      if (diff <= 0) { clearInterval(t); return; }
+      var diff = cdTarget - new Date();
+      if (diff <= 0) {
+        clearInterval(t);
+        // If reg deadline just passed, reload so it flips to entries countdown
+        if (cdTarget === REG_END) location.reload();
+        return;
+      }
       document.getElementById('dc-days').textContent  = pad(Math.floor(diff/86400000));
       document.getElementById('dc-hours').textContent = pad(Math.floor((diff%86400000)/3600000));
       document.getElementById('dc-mins').textContent  = pad(Math.floor((diff%3600000)/60000));
@@ -1320,8 +1329,8 @@
   // ─── Sticky mobile CTA — swaps to Submit after March 17 ───
   (function() {
     var now    = new Date();
-    var open   = new Date('2026-03-17T00:00:00-05:00');
-    var closed = new Date('2026-03-31T23:59:00-05:00');
+    var open   = new Date('2026-03-17T00:00:00-04:00'); // midnight EDT
+    var closed = new Date('2026-03-31T23:59:00-04:00'); // 11:59 PM EDT
     var label  = document.getElementById('stickyCtaLabel');
     var sub    = document.getElementById('stickyCtaSub');
     var btn    = document.getElementById('stickyCtaBtn');

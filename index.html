@@ -1100,8 +1100,8 @@
   // March 24 – March 31: counts to challenge close
   // After March 31: hides bar entirely
   (function() {
-    var REG_DEADLINE  = new Date('2026-03-24T23:59:00-04:00'); // March 24 11:59 PM EDT
-    var CHAL_DEADLINE = new Date('2026-04-01T03:59:00Z');       // March 31 11:59 PM EDT
+    var REG_DEADLINE  = new Date('2026-03-24T23:59:59-04:00'); // March 24 11:59 PM EDT
+    var CHAL_DEADLINE = new Date('2026-03-31T23:59:59-04:00');       // March 31 11:59 PM EDT
     var timer = null;
     var bar   = document.querySelector('.countdown-bar');
     var lbl   = document.querySelector('.countdown-bar .countdown-label');
@@ -1223,7 +1223,7 @@
   // After March 31: hide button entirely
   (function() {
     var now    = new Date();
-    var regEnd = new Date('2026-03-24T23:59:00-04:00'); // registration deadline EDT
+    var regEnd = new Date('2026-03-24T23:59:59-04:00'); // registration deadline EDT
     var chalEnd = new Date('2026-03-31T23:59:00-04:00'); // challenge closes EDT
     var navBtn = document.getElementById('navCta');
     var mobBtn = document.getElementById('mobCta');
@@ -1291,7 +1291,7 @@
     }
 
     // Key dates countdown — registration deadline first, then challenge close
-    var REG_END  = new Date('2026-03-24T23:59:00-04:00'); // March 24 11:59 PM EDT
+    var REG_END  = new Date('2026-03-24T23:59:59-04:00'); // March 24 11:59 PM EDT
     var cdTarget, cdLabel;
     if (now < REG_END) {
       cdTarget  = REG_END;

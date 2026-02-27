@@ -565,7 +565,7 @@
     <li><a href="#prizes">Prizes</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="submit-steps.html" class="nav-submit-link">Submit Steps</a></li>
-    <li><a href="#register" class="nav-cta">Register Now</a></li>
+    <li><a href="#register" class="nav-cta" id="navCta">Register Now</a></li>
   </ul>
 
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -579,7 +579,7 @@
   <a href="#prizes" onclick="toggleMenu()">Prizes</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="submit-steps.html">Submit Steps</a>
-  <a href="#register" class="mob-cta" onclick="toggleMenu()">Register Now — It's Free</a>
+  <a href="#register" class="mob-cta" id="mobCta" onclick="toggleMenu()">Register Now — It's Free</a>
   <div class="mob-counter">
     <div class="mob-counter-dot"></div>
     1,200+ people registered
@@ -1214,7 +1214,25 @@
     if (e.target === this) closeModal();
   });
 
-  // ─── Hamburger menu ───
+  // ─── Nav CTA swap ─────────────────────────────────────────
+  // Before March 24: "Register Now"
+  // March 24 – March 31: "Submit Your Steps"
+  // After March 31: hide button entirely
+  (function() {
+    var now    = new Date();
+    var regEnd = new Date('2026-03-24T23:59:00-04:00'); // registration deadline EDT
+    var chalEnd = new Date('2026-03-31T23:59:00-04:00'); // challenge closes EDT
+    var navBtn = document.getElementById('navCta');
+    var mobBtn = document.getElementById('mobCta');
+
+    if (now > chalEnd) {
+      if (navBtn) navBtn.style.display = 'none';
+      if (mobBtn) mobBtn.style.display = 'none';
+    } else if (now > regEnd) {
+      if (navBtn) { navBtn.textContent = 'Submit Your Steps'; navBtn.href = 'submit-steps.html'; }
+      if (mobBtn) { mobBtn.textContent = 'Submit Your Steps →'; mobBtn.href = 'submit-steps.html'; }
+    }
+  })();
   window.toggleMenu = function() {
     var btn  = document.getElementById('hamburger');
     var menu = document.getElementById('mobileMenu');

@@ -620,7 +620,7 @@
 
 <!-- COUNTDOWN -->
 <div class="countdown-bar">
-  <span class="countdown-label">Challenge closes in</span>
+  <span class="countdown-label">Registration closes in</span>
   <div class="countdown-units">
     <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
     <span class="cd-sep">:</span>
@@ -630,7 +630,7 @@
     <span class="cd-sep">:</span>
     <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Secs</span></div>
   </div>
-  <span class="countdown-label">Competition closes March 31st</span>
+  <span class="countdown-label">Deadline: March 16, 2026 · 11:59 PM ET</span>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -742,7 +742,7 @@
 
     <!-- Understated countdown -->
     <div class="dates-countdown" id="datesCountdown">
-      <div class="dc-cd-label" id="cdTargetLabel">Entries close in</div>
+      <div class="dc-cd-label" id="cdTargetLabel">Registration closes in</div>
       <div class="dc-cd-units">
         <div class="dc-cd-unit"><span class="dc-cd-num" id="dc-days">--</span><span class="dc-cd-lbl">Days</span></div>
         <div class="dc-cd-unit"><span class="dc-cd-num" id="dc-hours">--</span><span class="dc-cd-lbl">Hours</span></div>
@@ -1098,12 +1098,10 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ─── Main countdown bar ───────────────────────────────────
-  // Before March 24: counts to registration deadline
-  // March 24 – March 31: counts to challenge close
-  // After March 31: hides bar entirely
+  // Counts down to March 16, 2026 at 11:59 PM ET
+  // After the deadline: hides bar entirely
   (function() {
-    var REG_DEADLINE  = new Date('2026-03-24T23:59:59-04:00'); // March 24 11:59 PM EDT
-    var CHAL_DEADLINE = new Date('2026-03-31T23:59:59-04:00');       // March 31 11:59 PM EDT
+    var REG_DEADLINE  = new Date('2026-03-16T23:59:59-04:00'); // March 16 11:59 PM EDT
     var timer = null;
     var bar   = document.querySelector('.countdown-bar');
     var lbl   = document.querySelector('.countdown-bar .countdown-label');
@@ -1113,8 +1111,7 @@
 
     function getTarget() {
       var now = new Date();
-      if (now < REG_DEADLINE)  return { target: REG_DEADLINE,  label: 'Registration closes in' };
-      if (now <= CHAL_DEADLINE) return { target: CHAL_DEADLINE, label: 'Challenge closes in' };
+      if (now < REG_DEADLINE) return { target: REG_DEADLINE, label: 'Registration closes in' };
       return null;
     }
 
@@ -1220,12 +1217,12 @@
   });
 
   // ─── Nav CTA swap ─────────────────────────────────────────
-  // Before March 24: "Register Now"
-  // March 24 – March 31: "Submit Your Steps"
+  // Before March 16: "Register Now"
+  // March 16 – March 31: "Submit Your Steps"
   // After March 31: hide button entirely
   (function() {
     var now    = new Date();
-    var regEnd = new Date('2026-03-24T23:59:59-04:00'); // registration deadline EDT
+    var regEnd = new Date('2026-03-16T23:59:59-04:00'); // registration deadline EDT
     var chalEnd = new Date('2026-03-31T23:59:00-04:00'); // challenge closes EDT
     var navBtn = document.getElementById('navCta');
     var mobBtn = document.getElementById('mobCta');
@@ -1292,15 +1289,12 @@
       if (b1) { b1.className = 'dc-badge now'; b1.innerHTML = '<div class="dc-blink"></div> Open Now'; }
     }
 
-    // Key dates countdown — registration deadline first, then challenge close
-    var REG_END  = new Date('2026-03-24T23:59:59-04:00'); // March 24 11:59 PM EDT
+    // Key dates countdown — registration deadline only (March 16)
+    var REG_END  = new Date('2026-03-16T23:59:59-04:00'); // March 16 11:59 PM EDT
     var cdTarget, cdLabel;
     if (now < REG_END) {
       cdTarget  = REG_END;
       cdLabel   = 'Registration closes in';
-    } else if (now <= MAR31) {
-      cdTarget  = MAR31;
-      cdLabel   = 'Entries close in';
     } else {
       var cd = document.getElementById('datesCountdown');
       if (cd) cd.style.display = 'none';
@@ -1315,8 +1309,7 @@
       var diff = cdTarget - new Date();
       if (diff <= 0) {
         clearInterval(t);
-        // If reg deadline just passed, reload so it flips to entries countdown
-        if (cdTarget === REG_END) location.reload();
+        location.reload(); // hides countdown once deadline passes
         return;
       }
       document.getElementById('dc-days').textContent  = pad(Math.floor(diff/86400000));

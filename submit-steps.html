@@ -228,15 +228,15 @@
         <div class="success-icon">&#10003;</div>
         <h3>Session logged.</h3>
         <p>Your entry for today is in the draw. Come back tomorrow after your next walk and log again &mdash; one log per day, up to 15 entries total.</p>
-        <div class="entry-badge">Entry recorded &rarr; March 17th draw</div><br/>
+        <div class="entry-badge">Entry recorded &rarr; Daily log accepted</div><br/>
         <button class="submit-another" onclick="resetForm()">Log Another Session</button>
       </div>
 
     </div>
 
     <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;">
-      Challenge runs March 17&ndash;16, 2026. Submissions close March 16 at 11:59 PM ET.<br>
-      Winners drawn March 17th and notified by email. See <a href="index.html#terms" style="color:var(--red-dark);">Official Rules</a>.
+      Challenge runs March 17&ndash;31, 2026. Submissions close March 31 at 11:59 PM ET.<br>
+      Winners are notified by email after the challenge closes. See <a href="index.html#terms" style="color:var(--red-dark);">Official Rules</a>.
     </p>
   </div>
 
@@ -269,8 +269,8 @@
 <script>
 (function() {
 
-  var OPEN  = new Date('2026-03-17T00:00:00-05:00');
-  var CLOSE = new Date('2026-03-16T23:59:59-04:00');
+  var OPEN  = new Date('2026-03-17T00:00:00-04:00');
+  var CLOSE = new Date('2026-03-31T23:59:59-04:00');
   var now   = new Date();
 
   function pad(n) { return String(n).padStart(2,'0'); }
@@ -286,7 +286,7 @@
   if (now > CLOSE) {
     var btn = document.getElementById('submitBtn');
     btn.disabled = true;
-    btn.textContent = 'Challenge Closed — Winners Announced March 17th';
+    btn.textContent = 'Challenge Closed — Winners Notified by Email';
   }
 
   // ── Not-open countdown ─────────────────────────
@@ -317,7 +317,7 @@
   var defaultDate = (now >= OPEN && now <= CLOSE) ? now : OPEN;
   dateInput.value = toYMD(defaultDate);
   dateInput.min   = toYMD(OPEN);
-  dateInput.max   = '2026-03-16';
+  dateInput.max   = '2026-03-31';
 
   // ── Participant ID auto-format ──────────────────────
   document.getElementById('participantId').addEventListener('input', function() {
